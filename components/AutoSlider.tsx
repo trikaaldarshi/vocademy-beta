@@ -1,13 +1,21 @@
 
 import React from 'react';
+import { 
+  IconRocket, 
+  IconBrain, 
+  IconSwords, 
+  IconChart, 
+  IconNews, 
+  IconSearch 
+} from './AnimatedIcons';
 
 const SLIDE_ITEMS = [
-  { icon: '🚀', text: '500+ Editorial Words Analyzed Daily' },
-  { icon: '🧠', text: 'Scientific Spaced Repetition System' },
-  { icon: '⚔️', text: 'Live Multiplayer Vocabulary Battles' },
-  { icon: '📊', text: 'UPSC/SSC Level Performance Tracking' },
-  { icon: '📰', text: 'The Hindu & Indian Express Integration' },
-  { icon: '🎯', text: '100% Focused on Serious Aspirants' },
+  { icon: <IconNews />, text: '500+ Editorial Words Analyzed Daily' },
+  { icon: <IconBrain />, text: 'Scientific Spaced Repetition System' },
+  { icon: <IconSwords />, text: 'Live Multiplayer Vocabulary Battles' },
+  { icon: <IconChart />, text: 'UPSC/SSC Level Performance Tracking' },
+  { icon: <IconSearch />, text: 'The Hindu & Indian Express Integration' },
+  { icon: <IconRocket />, text: '100% Focused on Serious Aspirants' },
 ];
 
 export const AutoSlider: React.FC = () => {
@@ -23,7 +31,9 @@ export const AutoSlider: React.FC = () => {
             key={idx} 
             className="flex items-center space-x-6 mx-12 bg-gray-50/50 dark:bg-slate-900/30 px-8 py-5 rounded-[2rem] border border-gray-100 dark:border-slate-800 hover:bg-white dark:hover:bg-slate-900 hover:shadow-xl dark:hover:shadow-indigo-950/20 hover:border-indigo-100 dark:hover:border-indigo-900 transition-all duration-500 group cursor-default"
           >
-            <span className="text-3xl group-hover:scale-125 transition-transform duration-500">{item.icon}</span>
+            <div className="w-8 h-8 group-hover:scale-125 transition-transform duration-500">
+              {item.icon}
+            </div>
             <span className="text-indigo-950 dark:text-gray-200 font-black text-xl tracking-tighter opacity-80 group-hover:opacity-100">{item.text}</span>
           </div>
         ))}
