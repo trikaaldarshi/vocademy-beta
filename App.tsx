@@ -65,43 +65,45 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-white dark:bg-slate-950 text-gray-900 dark:text-gray-100 selection:bg-indigo-100 dark:selection:bg-indigo-900/40 transition-colors duration-300">
       
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/80 dark:bg-slate-950/80 backdrop-blur-md z-50 border-b border-gray-100 dark:border-slate-900 transition-colors">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <button 
-            onClick={() => navigateTo('home')}
-            className="flex items-center space-x-2 group active:scale-95 transition-transform"
-          >
-            <div className="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center shadow-lg group-hover:rotate-6 transition-transform">
-              <span className="text-white font-black text-xl">V</span>
-            </div>
-            <div className="flex items-center">
-              <span className="text-xl font-extrabold text-indigo-900 dark:text-white tracking-tight">Vocademy</span>
-              <div className="ml-2 flex items-center space-x-1 px-2 py-0.5 bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 text-[10px] font-black rounded-md border border-emerald-200 dark:border-emerald-800">
-                <GlowingDot />
-                <span>BETA</span>
+      {/* Navigation - Floating Inset Style */}
+      <div className="fixed top-4 w-full px-4 z-50">
+        <nav className="max-w-6xl mx-auto bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-white/20 dark:border-slate-800 rounded-3xl shadow-[0_8px_32px_0_rgba(31,38,135,0.15)] transition-all duration-300">
+          <div className="px-6 sm:px-8 h-16 flex items-center justify-between">
+            <button 
+              onClick={() => navigateTo('home')}
+              className="flex items-center space-x-2 group active:scale-95 transition-transform"
+            >
+              <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center shadow-lg group-hover:rotate-6 transition-transform">
+                <span className="text-white font-black text-xl">V</span>
               </div>
+              <div className="flex items-center">
+                <span className="text-xl font-extrabold text-indigo-900 dark:text-white tracking-tight">Vocademy</span>
+                <div className="hidden sm:flex ml-3 items-center space-x-1 px-2 py-0.5 bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 text-[10px] font-black rounded-md border border-emerald-200 dark:border-emerald-800">
+                  <GlowingDot />
+                  <span>BETA</span>
+                </div>
+              </div>
+            </button>
+            <div className="flex items-center space-x-2 sm:space-x-4">
+              <button 
+                onClick={toggleDarkMode}
+                className="p-2 w-10 h-10 rounded-full flex items-center justify-center hover:bg-indigo-50 dark:hover:bg-indigo-900/30 text-gray-500 dark:text-gray-400 transition-all"
+              >
+                {darkMode ? <i className="fas fa-sun text-lg text-yellow-500"></i> : <i className="fas fa-moon text-lg"></i>}
+              </button>
+              <button 
+                onClick={handleApply}
+                className="bg-indigo-600 dark:bg-indigo-500 text-white px-6 py-2.5 rounded-2xl font-bold text-sm hover:bg-indigo-700 dark:hover:bg-indigo-400 transition-all shadow-[0_4px_20px_-5px_rgba(79,70,229,0.4)] active:scale-95"
+              >
+                Get Access
+              </button>
             </div>
-          </button>
-          <div className="flex items-center space-x-4">
-            <button 
-              onClick={toggleDarkMode}
-              className="p-2 w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-100 dark:hover:bg-slate-900 text-gray-500 dark:text-gray-400 transition-all"
-            >
-              {darkMode ? <i className="fas fa-sun text-xl text-yellow-500"></i> : <i className="fas fa-moon text-xl"></i>}
-            </button>
-            <button 
-              onClick={handleApply}
-              className="bg-indigo-600 text-white px-5 py-2 rounded-full font-bold text-sm hover:bg-indigo-700 transition-all shadow-md active:scale-95"
-            >
-              Get Beta
-            </button>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </div>
 
       {/* Main Content Router */}
-      <main>
+      <main className="pt-8">
         {view === 'home' && (
           <Home 
             handleApply={handleApply} 
