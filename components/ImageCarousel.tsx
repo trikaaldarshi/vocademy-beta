@@ -5,7 +5,7 @@ const APP_SCREENS = [
   {
     title: "Daily Editorial Word",
     desc: "Master high-yield words like 'Diligent' with deep context, Hindi meanings, and exam-focused usage examples.",
-    img: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=600&h=1200",
+    img: "https://raw.githubusercontent.com/trikaaldarshi/Assets/refs/heads/main/Daily.png?auto=format&fit=crop&q=80&w=600&h=1200",
     accent: "bg-indigo-600",
     color: "indigo",
     icon: "fa-calendar-day"
@@ -13,7 +13,7 @@ const APP_SCREENS = [
   {
     title: "Tests & Challenges",
     desc: "A full suite of assessments: Daily Drills, Weekly Wrap-ups, and Monthly Mastery tests to track your progress.",
-    img: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=600&h=1200",
+    img: "https://raw.githubusercontent.com/trikaaldarshi/Assets/refs/heads/main/Tests.png?auto=format&fit=crop&q=80&w=600&h=1200",
     accent: "bg-emerald-600",
     color: "emerald",
     icon: "fa-list-check"
@@ -21,7 +21,7 @@ const APP_SCREENS = [
   {
     title: "Syno-Anto Sprint",
     desc: "Fast-paced practice for synonyms and antonyms. Choose between 'Self Test' or 'Multiplayer Duel'.",
-    img: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=600&h=1200",
+    img: "https://raw.githubusercontent.com/trikaaldarshi/Assets/refs/heads/main/Anto.png?auto=format&fit=crop&q=80&w=600&h=1200",
     accent: "bg-orange-600",
     color: "orange",
     icon: "fa-bolt"
@@ -29,7 +29,7 @@ const APP_SCREENS = [
   {
     title: "Mastery Achievements",
     desc: "Earn prestigious badges like 'Lexis Monarch' and 'Vocabulary Beast' as you climb to Level 100.",
-    img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=600&h=1200",
+    img: "https://raw.githubusercontent.com/trikaaldarshi/Assets/refs/heads/main/Achievement.png?auto=format&fit=crop&q=80&w=600&h=1200",
     accent: "bg-purple-600",
     color: "purple",
     icon: "fa-trophy"
