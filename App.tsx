@@ -4,9 +4,12 @@ import { Home } from './pages/Home';
 import { Methodology } from './pages/Methodology';
 import { Privacy } from './pages/Privacy';
 import { Terms } from './pages/Terms';
+import { Contact } from './pages/Contact';
+import { About } from './pages/About';
+import { Team } from './pages/Team';
 
 const FORM_URL = "https://forms.gle/7RjQUp1NXCGDm6LH8";
-type ViewState = 'home' | 'methodology' | 'privacy' | 'terms';
+type ViewState = 'home' | 'methodology' | 'privacy' | 'terms' | 'contact' | 'about' | 'team';
 
 const GlowingDot = () => (
   <span className="relative flex h-2 w-2">
@@ -27,14 +30,8 @@ const App: React.FC = () => {
     return 198;
   });
 
-  const [darkMode, setDarkMode] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('theme');
-      if (saved) return saved === 'dark';
-      return window.matchMedia('(prefers-color-scheme: dark)').matches;
-    }
-    return false;
-  });
+  // Force light mode by default on load as per request
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -68,32 +65,40 @@ const App: React.FC = () => {
       {/* Navigation - Floating Inset Style */}
       <div className="fixed top-4 w-full px-4 z-50">
         <nav className="max-w-6xl mx-auto bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-white/20 dark:border-slate-800 rounded-3xl shadow-[0_8px_32px_0_rgba(31,38,135,0.15)] transition-all duration-300">
-          <div className="px-6 sm:px-8 h-16 flex items-center justify-between">
+          <div className="px-4 sm:px-8 h-16 flex items-center justify-between">
             <button 
               onClick={() => navigateTo('home')}
               className="flex items-center space-x-2 group active:scale-95 transition-transform"
             >
-              <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center shadow-lg group-hover:rotate-6 transition-transform">
-                <span className="text-white font-black text-xl">V</span>
+              <div className="w-9 h-9 sm:w-10 sm:h-10 bg-indigo-600 rounded-xl flex items-center justify-center shadow-lg group-hover:rotate-6 transition-transform">
+                <span className="text-white font-black text-lg sm:text-xl">V</span>
               </div>
               <div className="flex items-center">
-                <span className="text-xl font-extrabold text-indigo-900 dark:text-white tracking-tight">Vocademy</span>
-                <div className="hidden sm:flex ml-3 items-center space-x-1 px-2 py-0.5 bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 text-[10px] font-black rounded-md border border-emerald-200 dark:border-emerald-800">
+                <span className="text-lg sm:text-xl font-extrabold text-indigo-900 dark:text-white tracking-tight">Vocademy</span>
+                <div className="ml-2 flex items-center space-x-1.5 px-2 py-0.5 bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 text-[9px] sm:text-[10px] font-black rounded-md border border-emerald-200 dark:border-emerald-800">
                   <GlowingDot />
                   <span>BETA</span>
                 </div>
               </div>
             </button>
-            <div className="flex items-center space-x-2 sm:space-x-4">
+            
+            <div className="hidden lg:flex items-center space-x-6 mx-4">
+              <button onClick={() => navigateTo('about')} className="text-sm font-bold text-gray-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">About</button>
+              <button onClick={() => navigateTo('team')} className="text-sm font-bold text-gray-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Team</button>
+              <button onClick={() => navigateTo('methodology')} className="text-sm font-bold text-gray-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Methodology</button>
+              <button onClick={() => navigateTo('contact')} className="text-sm font-bold text-gray-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Contact</button>
+            </div>
+
+            <div className="flex items-center space-x-1 sm:space-x-4">
               <button 
                 onClick={toggleDarkMode}
-                className="p-2 w-10 h-10 rounded-full flex items-center justify-center hover:bg-indigo-50 dark:hover:bg-indigo-900/30 text-gray-500 dark:text-gray-400 transition-all"
+                className="p-2 w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center hover:bg-indigo-50 dark:hover:bg-indigo-900/30 text-gray-500 dark:text-gray-400 transition-all"
               >
                 {darkMode ? <i className="fas fa-sun text-lg text-yellow-500"></i> : <i className="fas fa-moon text-lg"></i>}
               </button>
               <button 
                 onClick={handleApply}
-                className="bg-indigo-600 dark:bg-indigo-500 text-white px-6 py-2.5 rounded-2xl font-bold text-sm hover:bg-indigo-700 dark:hover:bg-indigo-400 transition-all shadow-[0_4px_20px_-5px_rgba(79,70,229,0.4)] active:scale-95"
+                className="bg-indigo-600 dark:bg-indigo-500 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-2xl font-bold text-xs sm:text-sm hover:bg-indigo-700 dark:hover:bg-indigo-400 transition-all shadow-[0_4px_20px_-5px_rgba(79,70,229,0.4)] active:scale-95"
               >
                 Get Access
               </button>
@@ -116,6 +121,9 @@ const App: React.FC = () => {
         {view === 'methodology' && <Methodology navigateTo={navigateTo} />}
         {view === 'privacy' && <Privacy />}
         {view === 'terms' && <Terms />}
+        {view === 'contact' && <Contact navigateTo={navigateTo} />}
+        {view === 'about' && <About navigateTo={navigateTo} />}
+        {view === 'team' && <Team navigateTo={navigateTo} />}
       </main>
 
       {/* Footer */}
@@ -131,24 +139,28 @@ const App: React.FC = () => {
                 The most advanced AI-powered vocabulary platform designed specifically for the Indian competitive exam ecosystem.
               </p>
               <div className="flex space-x-4">
-                <a href="https://t.me/Anmolgupta_11" target="_blank" rel="noreferrer" className="w-12 h-12 bg-gray-100 dark:bg-slate-900 rounded-full flex items-center justify-center text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 transition-all">
+                <a href="https://telegram.dog/VocademyApp" target="_blank" rel="noreferrer" className="w-12 h-12 bg-gray-100 dark:bg-slate-900 rounded-full flex items-center justify-center text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 transition-all hover:scale-110 hover:-translate-y-1 hover:rotate-6 shadow-sm hover:shadow-md">
                   <i className="fab fa-telegram-plane text-xl"></i>
                 </a>
-                <a href="#" className="w-12 h-12 bg-gray-100 dark:bg-slate-900 rounded-full flex items-center justify-center text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 transition-all">
+                <a href="https://X.com/VocademyApp" target="_blank" rel="noreferrer" className="w-12 h-12 bg-gray-100 dark:bg-slate-900 rounded-full flex items-center justify-center text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 transition-all hover:scale-110 hover:-translate-y-1 hover:rotate-6 shadow-sm hover:shadow-md">
                   <i className="fab fa-twitter text-xl"></i>
                 </a>
-                <a href="#" className="w-12 h-12 bg-gray-100 dark:bg-slate-900 rounded-full flex items-center justify-center text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 transition-all">
+                <a href="https://instagram.com/VocademyApp" target="_blank" rel="noreferrer" className="w-12 h-12 bg-gray-100 dark:bg-slate-900 rounded-full flex items-center justify-center text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 transition-all hover:scale-110 hover:-translate-y-1 hover:rotate-6 shadow-sm hover:shadow-md">
                   <i className="fab fa-instagram text-xl"></i>
+                </a>
+                <a href="https://www.reddit.com/r/Vocademyapp" target="_blank" rel="noreferrer" className="w-12 h-12 bg-gray-100 dark:bg-slate-900 rounded-full flex items-center justify-center text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 transition-all hover:scale-110 hover:-translate-y-1 hover:rotate-6 shadow-sm hover:shadow-md">
+                  <i className="fab fa-reddit-alien text-xl"></i>
                 </a>
               </div>
             </div>
 
             <div>
-              <h4 className="text-indigo-950 dark:text-white font-black uppercase tracking-widest text-sm mb-6">Resources</h4>
+              <h4 className="text-indigo-950 dark:text-white font-black uppercase tracking-widest text-sm mb-6">Explore</h4>
               <ul className="space-y-4">
+                <li><button onClick={() => navigateTo('about')} className="text-gray-500 dark:text-gray-400 hover:text-indigo-600 transition-colors font-bold text-left">About Us</button></li>
+                <li><button onClick={() => navigateTo('team')} className="text-gray-500 dark:text-gray-400 hover:text-indigo-600 transition-colors font-bold text-left">Meet the Team</button></li>
                 <li><button onClick={() => navigateTo('methodology')} className="text-gray-500 dark:text-gray-400 hover:text-indigo-600 transition-colors font-bold text-left">Methodology</button></li>
-                <li><a href="#demo" onClick={(e) => { if(view !== 'home') { e.preventDefault(); navigateTo('home'); setTimeout(() => document.getElementById('demo')?.scrollIntoView({behavior:'smooth'}), 100); } }} className="text-gray-500 dark:text-gray-400 hover:text-indigo-600 transition-colors font-bold block">AI Analyzer Demo</a></li>
-                <li><a href="https://t.me/Anmolgupta_11" className="text-gray-500 dark:text-gray-400 hover:text-indigo-600 transition-colors font-bold block">Community Hub</a></li>
+                <li><a href="https://telegram.dog/VocademyApp" className="text-gray-500 dark:text-gray-400 hover:text-indigo-600 transition-colors font-bold block">Community Hub</a></li>
               </ul>
             </div>
 
@@ -157,7 +169,7 @@ const App: React.FC = () => {
               <ul className="space-y-4">
                 <li><button onClick={() => navigateTo('privacy')} className="text-gray-500 dark:text-gray-400 hover:text-indigo-600 transition-colors font-bold text-left">Privacy Policy</button></li>
                 <li><button onClick={() => navigateTo('terms')} className="text-gray-500 dark:text-gray-400 hover:text-indigo-600 transition-colors font-bold text-left">Terms of Service</button></li>
-                <li><a href="mailto:support@vocademy.app" className="text-gray-500 dark:text-gray-400 hover:text-indigo-600 transition-colors font-bold block">Contact Us</a></li>
+                <li><button onClick={() => navigateTo('contact')} className="text-gray-500 dark:text-gray-400 hover:text-indigo-600 transition-colors font-bold text-left">Contact Us</button></li>
               </ul>
             </div>
           </div>
