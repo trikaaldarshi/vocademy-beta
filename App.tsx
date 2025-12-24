@@ -19,15 +19,15 @@ const GlowingDot = () => (
 );
 
 const App: React.FC = () => {
-  const maxSpots = 199;
+  const maxSpots = 50;
   const [view, setView] = useState<ViewState>('home');
   
   const [spotsTaken] = useState(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('vocademy_spots_taken');
-      return saved ? parseInt(saved, 10) : 198;
+      return saved ? parseInt(saved, 10) : 29;
     }
-    return 198;
+    return 29;
   });
 
   // Force light mode by default on load as per request
