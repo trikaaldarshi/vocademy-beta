@@ -174,11 +174,9 @@ const App: React.FC = () => {
             </div>
           </div>
 
-          <div className="pt-12 border-t border-gray-100 dark:border-slate-900 flex flex-col md:flex-row justify-between items-center text-gray-400 dark:text-gray-600 font-bold text-sm">
-            <div className="mb-4 md:mb-0">© 2024 Vocademy App. Crafted with ❤️ for Aspirants.</div>
-            <div className="flex space-x-6">
-              <span>Built on Gemini AI</span>
-              <span className="hidden md:inline">•</span>
+          <div className="pt-12 border-t border-gray-100 dark:border-slate-900 flex flex-col md:flex-row justify-between items-center font-bold text-sm">
+            <div className="mb-4 md:mb-0 text-blue-900 dark:text-blue-400">© 2025 Vocademy App. Crafted with ❤️ for Aspirants.</div>
+            <div className="flex space-x-6 text-gray-400 dark:text-gray-600">
               <span>SSC • UPSC • Banking</span>
             </div>
           </div>
