@@ -8,5 +8,9 @@ export default defineConfig({
   },
   server: {
     port: 3000,
-  }
+  },
+  // This allows the browser to access process.env.API_KEY
+  define: {
+    'process.env.API_KEY': JSON.stringify(process.env.API_KEY || process.env.GEMINI_API_KEY || ''),
+  },
 });
