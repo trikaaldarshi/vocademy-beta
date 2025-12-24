@@ -40,7 +40,7 @@ export const Home: React.FC<HomeProps> = ({
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
-            <span className="text-indigo-900 dark:text-white ml-1 font-bold">is Live</span>
+            <span className="text-indigo-900 dark:text-white ml-1 font-bold">beta is Live</span>
           </span>
           
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-black text-indigo-950 dark:text-white leading-tight mb-8 tracking-tighter">
