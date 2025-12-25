@@ -26,7 +26,7 @@ export const Team: React.FC<TeamProps> = ({ navigateTo }) => {
         />
         <TeamMember 
           name="ѕнυкℓα जी 👀"
-          role="Co-Founder & Creative Director"
+          role="Creative Director"
           image="https://raw.githubusercontent.com/trikaaldarshi/Assets/refs/heads/main/IMG_20251225_000346_829.jpg"
           bio="Visionary designer and creative strategist. Crafting the aesthetic identity and intuitive user experience that makes Vocademy unique."
         />

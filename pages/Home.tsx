@@ -34,13 +34,9 @@ export const Home: React.FC<HomeProps> = ({
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-indigo-100/30 dark:bg-indigo-900/10 rounded-full blur-[120px] -z-10 animate-pulse"></div>
         
         <div className="max-w-7xl mx-auto relative">
-          <span className="inline-flex items-center space-x-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-sm font-bold mb-4 md:mb-6 border border-indigo-200 dark:border-indigo-800 transition-all hover:scale-105">
+          <span className="inline-flex items-center space-x-2 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-sm font-bold mb-4 md:mb-6 border border-red-200 dark:border-red-800 transition-all hover:scale-105">
             <span>नमस्कार! 🌙</span>
-            <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-emerald-500"></span>
-            </span>
-            <span className="text-indigo-900 dark:text-white ml-1 font-bold">beta is Live</span>
+            <span className="text-red-900 dark:text-white ml-1 font-bold uppercase tracking-widest">Beta Phase 1 Full</span>
           </span>
           
           <h1 className="text-3xl sm:text-5xl md:text-7xl font-black text-indigo-950 dark:text-white leading-tight mb-6 md:mb-8 tracking-tighter">
@@ -56,9 +52,9 @@ export const Home: React.FC<HomeProps> = ({
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 px-4 sm:px-0">
             <button 
               onClick={handleApply}
-              className="w-full sm:w-auto bg-indigo-600 dark:bg-indigo-500 text-white px-7 sm:px-10 py-3.5 sm:py-5 rounded-xl md:rounded-2xl font-black text-base sm:text-xl hover:bg-indigo-700 dark:hover:bg-indigo-600 transition-all shadow-xl hover:-translate-y-1"
+              className="w-full sm:w-auto bg-gray-400 dark:bg-slate-700 text-white px-7 sm:px-10 py-3.5 sm:py-5 rounded-xl md:rounded-2xl font-black text-base sm:text-xl transition-all shadow-xl"
             >
-              Get Beta Access Now
+              Beta Phase Full
             </button>
             <a 
               href="#demo"
@@ -76,7 +72,7 @@ export const Home: React.FC<HomeProps> = ({
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 sm:mb-20">
             <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-indigo-950 dark:text-white mb-4 md:mb-6 leading-tight">Built for Serious Aspirants</h2>
-            <p className="text-base sm:text-xl text-gray-500 dark:text-gray-400 max-w-2xl mx-auto font-medium">Why join our testing phase? Exclusive benefits for the first {maxSpots} users.</p>
+            <p className="text-base sm:text-xl text-gray-500 dark:text-gray-400 max-w-2xl mx-auto font-medium">Phase 1 is full. Stay tuned for Phase 2 registration.</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
@@ -107,31 +103,30 @@ export const Home: React.FC<HomeProps> = ({
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
         <div className="max-w-4xl mx-auto relative z-10 flex flex-col items-center">
           <h2 className="text-2xl sm:text-4xl md:text-6xl font-black mb-4 md:mb-6 leading-tight px-2">Ready to transform your preparation?</h2>
-          <p className="text-base sm:text-xl md:text-2xl text-indigo-100 mb-8 max-w-2xl font-medium px-4">We are selecting only {maxSpots} testers for the private beta.</p>
+          <p className="text-base sm:text-xl md:text-2xl text-indigo-100 mb-8 max-w-2xl font-medium px-4">Our Beta tester slots for Phase 1 are now fully occupied.</p>
           
           <div className="w-full max-w-md mb-2 flex justify-between items-end px-1">
-             <span className="text-[9px] sm:text-[10px] font-black text-emerald-300 tracking-[0.2em] uppercase">Spot Taken</span>
+             <span className="text-[9px] sm:text-[10px] font-black text-red-300 tracking-[0.2em] uppercase">Phase 1 Full</span>
              <span className="text-[9px] sm:text-[10px] font-black text-indigo-200 tracking-tighter">{spotsTaken}/{maxSpots}</span>
           </div>
           
           <div className="w-full max-w-md bg-indigo-800/50 dark:bg-slate-900/40 rounded-full h-3 md:h-4 mb-8 md:mb-10 border border-white/10 overflow-hidden backdrop-blur-sm relative">
             <div 
-              className="h-full bg-emerald-400 transition-all duration-1000 ease-out shadow-[0_0_20px_rgba(52,211,153,0.5)]"
+              className="h-full bg-red-400 transition-all duration-1000 ease-out shadow-[0_0_20px_rgba(248,113,113,0.5)]"
               style={{ width: `${progressPercent}%` }}
             ></div>
           </div>
 
           <button 
             onClick={handleApply}
-            className="group bg-white text-indigo-600 px-8 sm:px-12 py-3.5 sm:py-5 rounded-2xl md:rounded-[2rem] font-black text-lg sm:text-2xl md:text-3xl shadow-2xl hover:scale-105 transition-all active:scale-95 flex items-center space-x-2 md:space-x-3"
+            className="group bg-gray-100 text-gray-500 px-8 sm:px-12 py-3.5 sm:py-5 rounded-2xl md:rounded-[2rem] font-black text-lg sm:text-2xl md:text-3xl shadow-2xl cursor-not-allowed"
           >
-            <span>Apply for Waitlist</span>
-            <i className="fas fa-arrow-right text-base sm:text-xl transition-transform group-hover:translate-x-1"></i>
+            Waitlist Closed
           </button>
           
-          <div className="mt-6 md:mt-8 px-4 md:px-5 py-1.5 md:py-2 border-2 border-yellow-400/50 inline-block rounded-lg">
-            <p className="font-bold text-indigo-100 text-base sm:text-xl tracking-wide uppercase">
-              {spotsLeft} {spotsLeft === 1 ? 'slot' : 'slots'} remaining today
+          <div className="mt-6 md:mt-8 px-4 md:px-5 py-1.5 md:py-2 border-2 border-red-400/50 inline-block rounded-lg">
+            <p className="font-bold text-red-100 text-base sm:text-xl tracking-wide uppercase">
+              0 slots remaining - Phase 1 Complete
             </p>
           </div>
         </div>
