@@ -195,7 +195,15 @@ const App: React.FC = () => {
                 <a href="https://telegram.dog/VocademyApp" target="_blank" rel="noreferrer" className="w-12 h-12 bg-gray-100 dark:bg-slate-900 rounded-full flex items-center justify-center text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 transition-all hover:scale-110 shadow-sm">
                   <i className="fab fa-telegram-plane text-xl"></i>
                 </a>
-                {/* Other icons omitted for brevity but remain in real code */}
+                <a href="https://X.com/VocademyApp" target="_blank" rel="noreferrer" className="w-12 h-12 bg-gray-100 dark:bg-slate-900 rounded-full flex items-center justify-center text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 transition-all hover:scale-110 shadow-sm">
+                  <i className="fab fa-twitter text-xl"></i>
+                </a>
+                <a href="https://instagram.com/VocademyApp" target="_blank" rel="noreferrer" className="w-12 h-12 bg-gray-100 dark:bg-slate-900 rounded-full flex items-center justify-center text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 transition-all hover:scale-110 shadow-sm">
+                  <i className="fab fa-instagram text-xl"></i>
+                </a>
+                <a href="https://www.reddit.com/r/Vocademyapp" target="_blank" rel="noreferrer" className="w-12 h-12 bg-gray-100 dark:bg-slate-900 rounded-full flex items-center justify-center text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 transition-all hover:scale-110 shadow-sm">
+                  <i className="fab fa-reddit-alien text-xl"></i>
+                </a>
               </div>
             </div>
 
