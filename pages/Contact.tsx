@@ -48,8 +48,8 @@ export const Contact: React.FC<ContactProps> = ({ navigateTo }) => {
           <h2 className="text-3xl font-black text-indigo-950 dark:text-white mb-6">How we can help</h2>
           <div className="space-y-6">
             <FeaturePoint 
-              title="Beta Feedback" 
-              desc="As an early tester, your feedback shapes the future of Vocademy. Report bugs or suggest features directly to our dev team." 
+              title="Early Feedback" 
+              desc="As an early supporter, your feedback shapes the future of Vocademy. Suggest features directly to our dev team." 
             />
             <FeaturePoint 
               title="Institutional Partnerships" 

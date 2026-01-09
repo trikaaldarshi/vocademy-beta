@@ -34,9 +34,9 @@ export const Home: React.FC<HomeProps> = ({
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-indigo-100/30 dark:bg-indigo-900/10 rounded-full blur-[120px] -z-10 animate-pulse"></div>
         
         <div className="max-w-7xl mx-auto relative">
-          <span className="inline-flex items-center space-x-2 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-sm font-bold mb-4 md:mb-6 border border-red-200 dark:border-red-800 transition-all hover:scale-105">
+          <span className="inline-flex items-center space-x-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-sm font-bold mb-4 md:mb-6 border border-green-200 dark:border-green-800 transition-all hover:scale-105">
             <span>नमस्कार! 🌙</span>
-            <span className="text-red-900 dark:text-white ml-1 font-bold uppercase tracking-widest">Beta Phase 1 Full</span>
+            <span className="text-green-900 dark:text-white ml-1 font-bold uppercase tracking-widest">Pre-registration LIVE</span>
           </span>
           
           <h1 className="text-3xl sm:text-5xl md:text-7xl font-black text-indigo-950 dark:text-white leading-tight mb-6 md:mb-8 tracking-tighter">
@@ -52,9 +52,9 @@ export const Home: React.FC<HomeProps> = ({
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 px-4 sm:px-0">
             <button 
               onClick={handleApply}
-              className="w-full sm:w-auto bg-gray-400 dark:bg-slate-700 text-white px-7 sm:px-10 py-3.5 sm:py-5 rounded-xl md:rounded-2xl font-black text-base sm:text-xl transition-all shadow-xl"
+              className="w-full sm:w-auto bg-indigo-600 dark:bg-indigo-500 text-white px-7 sm:px-10 py-3.5 sm:py-5 rounded-xl md:rounded-2xl font-black text-base sm:text-xl transition-all shadow-xl hover:bg-indigo-700 active:scale-95"
             >
-              Beta Phase Full
+              Join Pre-registration
             </button>
             <a 
               href="#demo"
@@ -72,7 +72,7 @@ export const Home: React.FC<HomeProps> = ({
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 sm:mb-20">
             <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-indigo-950 dark:text-white mb-4 md:mb-6 leading-tight">Built for Serious Aspirants</h2>
-            <p className="text-base sm:text-xl text-gray-500 dark:text-gray-400 max-w-2xl mx-auto font-medium">Phase 1 is full. Stay tuned for Phase 2 registration.</p>
+            <p className="text-base sm:text-xl text-gray-500 dark:text-gray-400 max-w-2xl mx-auto font-medium">Be among the first 500 users to get early access and exclusive launch benefits.</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
@@ -80,7 +80,7 @@ export const Home: React.FC<HomeProps> = ({
             <FeatureCard icon={<IconBrain />} title="SRS Flashcards" desc="Spaced Repetition System logic ensures you never forget a word you've learned." />
             <FeatureCard icon={<IconSwords />} title="Multiplayer Duels" desc="Battle fellow aspirants real-time to test your speed and precision under pressure." />
             <FeatureCard icon={<IconChart />} title="Progress Tracking" desc="Detailed analytics of your vocabulary strength and exam readiness." />
-            <FeatureCard icon={<IconGift />} title="Lifetime Beta Status" desc="Get free premium access for 6 months after the official launch as a reward." />
+            <FeatureCard icon={<IconGift />} title="Early Bird Benefits" desc="Get free premium access for 6 months after the official launch as a reward for pre-registering." />
             <FeatureCard icon={<IconMessage />} title="Direct Support" desc="Priority telegram support and direct influence on upcoming features." />
           </div>
         </div>
@@ -98,35 +98,50 @@ export const Home: React.FC<HomeProps> = ({
         <ImageCarousel />
       </section>
 
-      {/* CTA Section */}
+      {/* CTA Section updated to match screenshot exactly */}
       <section className="py-20 sm:py-32 px-4 bg-indigo-600 dark:bg-indigo-700 text-white text-center relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
         <div className="max-w-4xl mx-auto relative z-10 flex flex-col items-center">
-          <h2 className="text-2xl sm:text-4xl md:text-6xl font-black mb-4 md:mb-6 leading-tight px-2">Ready to transform your preparation?</h2>
-          <p className="text-base sm:text-xl md:text-2xl text-indigo-100 mb-8 max-w-2xl font-medium px-4">Our Beta tester slots for Phase 1 are now fully occupied.</p>
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-black mb-4 md:mb-6 leading-tight px-2 tracking-tight">
+            Ready to transform your preparation?
+          </h2>
+          <p className="text-base sm:text-xl md:text-xl text-indigo-100 mb-12 max-w-2xl font-medium px-4">
+            Limited spots remaining for the inaugural pre-registration phase.
+          </p>
           
-          <div className="w-full max-w-md mb-2 flex justify-between items-end px-1">
-             <span className="text-[9px] sm:text-[10px] font-black text-red-300 tracking-[0.2em] uppercase">Phase 1 Full</span>
-             <span className="text-[9px] sm:text-[10px] font-black text-indigo-200 tracking-tighter">{spotsTaken}/{maxSpots}</span>
-          </div>
-          
-          <div className="w-full max-w-md bg-indigo-800/50 dark:bg-slate-900/40 rounded-full h-3 md:h-4 mb-8 md:mb-10 border border-white/10 overflow-hidden backdrop-blur-sm relative">
-            <div 
-              className="h-full bg-red-400 transition-all duration-1000 ease-out shadow-[0_0_20px_rgba(248,113,113,0.5)]"
-              style={{ width: `${progressPercent}%` }}
-            ></div>
+          <div className="w-full max-w-lg relative mb-12">
+            {/* Phase info label with arrow as requested */}
+            <div className="absolute -top-12 left-0 flex flex-col items-start">
+               <div className="border-2 border-indigo-950 bg-indigo-500/50 px-4 py-1.5 rounded-sm mb-1">
+                 <span className="text-[11px] font-black text-white uppercase tracking-wider">PHASE 1: {spotsLeft} SPOTS LEFT</span>
+               </div>
+               <div className="ml-2 w-0.5 h-10 bg-indigo-950 relative">
+                  <div className="absolute -top-1 -left-[5px] w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-b-[8px] border-b-indigo-950"></div>
+               </div>
+            </div>
+
+            <div className="flex justify-end mb-2">
+               <span className="text-[11px] font-black text-indigo-200 tracking-tighter">{spotsTaken}/{maxSpots}</span>
+            </div>
+            
+            <div className="w-full bg-indigo-800/50 dark:bg-slate-900/40 rounded-full h-4 border border-white/10 overflow-hidden backdrop-blur-sm relative shadow-inner">
+              <div 
+                className="h-full bg-green-400 transition-all duration-1000 ease-out shadow-[0_0_20px_rgba(74,222,128,0.5)]"
+                style={{ width: `${progressPercent}%` }}
+              ></div>
+            </div>
           </div>
 
           <button 
             onClick={handleApply}
-            className="group bg-gray-100 text-gray-500 px-8 sm:px-12 py-3.5 sm:py-5 rounded-2xl md:rounded-[2rem] font-black text-lg sm:text-2xl md:text-3xl shadow-2xl cursor-not-allowed"
+            className="group bg-white text-indigo-950 px-10 sm:px-14 py-4 sm:py-6 rounded-2xl md:rounded-2xl font-black text-xl sm:text-2xl md:text-2xl shadow-[0_20px_40px_-12px_rgba(0,0,0,0.3)] hover:scale-105 active:scale-95 transition-all border-b-4 border-gray-200 mb-12"
           >
-            Waitlist Closed
+            Claim Your Spot
           </button>
           
-          <div className="mt-6 md:mt-8 px-4 md:px-5 py-1.5 md:py-2 border-2 border-red-400/50 inline-block rounded-lg">
-            <p className="font-bold text-red-100 text-base sm:text-xl tracking-wide uppercase">
-              0 slots remaining - Phase 1 Complete
+          <div className="px-10 sm:px-12 py-3 md:py-4 border-2 border-indigo-500 bg-indigo-600/20 inline-block rounded-2xl">
+            <p className="font-black text-white text-sm sm:text-lg tracking-wide uppercase">
+              {spotsLeft} SLOTS REMAINING - PRE-REGISTRATION LIVE
             </p>
           </div>
         </div>

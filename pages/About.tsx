@@ -56,19 +56,19 @@ export const About: React.FC<AboutProps> = ({ navigateTo }) => {
       </div>
 
       <div className="text-center">
-        <h2 className="text-2xl md:text-4xl font-black text-indigo-950 dark:text-white mb-8 md:mb-12">Why Beta?</h2>
+        <h2 className="text-2xl md:text-4xl font-black text-indigo-950 dark:text-white mb-8 md:mb-12">Why Pre-register?</h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-20">
           <Card 
-            title="Real-world Testing" 
-            desc="We need serious aspirants to test if our AI analysis matches their actual exam needs."
+            title="Early Access" 
+            desc="Be the first to experience our AI analysis tools as soon as they go live for the public."
           />
           <Card 
-            title="Community Feedback" 
-            desc="Every feature on Vocademy is a direct result of user requests from our early testers."
+            title="Exclusive Rewards" 
+            desc="Early supporters receive significant benefits, including extended premium access after launch."
           />
           <Card 
-            title="Quality Control" 
-            desc="Help us refine our Spaced Repetition logic for maximum memory retention."
+            title="Shape the Product" 
+            desc="Help us refine our Spaced Repetition logic to ensure maximum memory retention for all users."
           />
         </div>
         <button 

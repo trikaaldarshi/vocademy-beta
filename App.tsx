@@ -10,52 +10,50 @@ import { Team } from './pages/Team';
 
 type ViewState = 'home' | 'methodology' | 'privacy' | 'terms' | 'contact' | 'about' | 'team';
 
-const GlowingDot = () => (
+const GlowingDot = ({ color = "bg-green-500", pingColor = "bg-green-400" }) => (
   <span className="relative flex h-2 w-2">
-    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-    <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+    <span className={`animate-ping absolute inline-flex h-full w-full rounded-full ${pingColor} opacity-75`}></span>
+    <span className={`relative inline-flex rounded-full h-2 w-2 ${color}`}></span>
   </span>
 );
 
-const BetaFullModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => {
+const RegistrationModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-      {/* Liquid Glass Overlay */}
       <div 
         className="absolute inset-0 bg-indigo-950/20 dark:bg-black/40 backdrop-blur-xl animate-fade-in"
         onClick={onClose}
       ></div>
       
-      {/* Modal Content */}
-      <div className="relative w-full max-w-md bg-white/60 dark:bg-slate-900/60 backdrop-blur-2xl border border-white/40 dark:border-white/10 rounded-[2.5rem] p-8 md:p-10 shadow-[0_32px_64px_-12px_rgba(0,0,0,0.2)] animate-modal-pop text-center">
-        <div className="w-20 h-20 bg-red-100 dark:bg-red-900/30 rounded-3xl flex items-center justify-center mx-auto mb-6 text-red-600 dark:text-red-400 animate-float">
-          <i className="fas fa-lock text-3xl"></i>
+      <div className="relative w-full max-w-md bg-white dark:bg-slate-900 border border-indigo-100 dark:border-white/10 rounded-[2.5rem] p-8 md:p-10 shadow-2xl animate-modal-pop text-center">
+        <div className="w-20 h-20 bg-indigo-100 dark:bg-indigo-900/30 rounded-3xl flex items-center justify-center mx-auto mb-6 text-indigo-600 dark:text-indigo-400 animate-float">
+          <i className="fas fa-rocket text-3xl"></i>
         </div>
         
         <h3 className="text-2xl md:text-3xl font-black text-indigo-950 dark:text-white mb-4 tracking-tight leading-tight">
-          Beta program <br /> is currently full
+          Join the <br /> Pre-registration
         </h3>
         
         <p className="text-gray-600 dark:text-gray-400 font-medium leading-relaxed mb-8">
-          We've reached our capacity for Phase 1 testing. We are not accepting new testers at this moment to ensure the highest quality of experience for our current group.
+          Secure your spot in the first 500 users to get 6 months of premium access for free upon launch.
         </p>
 
         <div className="space-y-3">
           <a 
-            href="https://telegram.dog/VocademyApp" 
+            href="https://forms.gle/vocademy-pre-reg" 
             target="_blank" 
             rel="noreferrer"
             className="block w-full bg-indigo-600 text-white py-4 rounded-2xl font-black text-lg shadow-xl hover:bg-indigo-700 transition-all active:scale-95"
           >
-            Join the Waitlist (Telegram)
+            Apply via Google Form
           </a>
           <button 
             onClick={onClose}
-            className="block w-full py-4 text-indigo-600 dark:text-indigo-400 font-bold hover:opacity-70 transition-opacity"
+            className="block w-full py-4 text-gray-500 dark:text-gray-400 font-bold hover:opacity-70 transition-opacity"
           >
-            I'll wait for Phase 2
+            Maybe Later
           </button>
         </div>
       </div>
@@ -74,14 +72,13 @@ const BetaFullModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isO
 };
 
 const App: React.FC = () => {
-  const maxSpots = 50;
+  const maxSpots = 500;
   const [view, setView] = useState<ViewState>('home');
   const [isModalOpen, setIsModalOpen] = useState(false);
   
-  // Program is full
-  const spotsTaken = 50;
+  // 427/500 spots taken = 73 spots left as per screenshot
+  const spotsTaken = 427;
 
-  // Light mode by default
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
@@ -113,7 +110,7 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-white dark:bg-slate-950 text-gray-900 dark:text-gray-100 selection:bg-indigo-100 dark:selection:bg-indigo-900/40 transition-colors duration-300">
       
-      <BetaFullModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <RegistrationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
       {/* Navigation */}
       <div className="fixed top-4 w-full px-4 z-50">
@@ -127,10 +124,10 @@ const App: React.FC = () => {
                 <span className="text-white font-black text-lg sm:text-xl">V</span>
               </div>
               <div className="flex items-center">
-                <span className="text-lg sm:text-xl font-extrabold text-indigo-900 dark:text-white tracking-tight">Vocademy</span>
-                <div className="ml-2 flex items-center space-x-1.5 px-2 py-0.5 bg-red-100 dark:bg-red-900/40 text-red-600 dark:text-red-400 text-[9px] sm:text-[10px] font-black rounded-md border border-red-200 dark:border-red-800">
+                <span className="text-lg sm:text-xl font-extrabold text-indigo-950 dark:text-white tracking-tight">Vocademy</span>
+                <div className="ml-2 flex items-center space-x-1.5 px-2 py-0.5 bg-green-100 dark:bg-green-900/40 text-green-600 dark:text-green-400 text-[9px] sm:text-[10px] font-black rounded-md border border-green-200 dark:border-green-800">
                   <GlowingDot />
-                  <span>FULL</span>
+                  <span>LIVE</span>
                 </div>
               </div>
             </button>
@@ -151,9 +148,9 @@ const App: React.FC = () => {
               </button>
               <button 
                 onClick={handleApply}
-                className="bg-gray-400 dark:bg-slate-700 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-2xl font-bold text-xs sm:text-sm transition-all shadow-md active:scale-95"
+                className="bg-indigo-600 dark:bg-indigo-500 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-2xl font-bold text-xs sm:text-sm transition-all shadow-md active:scale-95"
               >
-                Beta Full
+                Join Now
               </button>
             </div>
           </div>
@@ -234,16 +231,15 @@ const App: React.FC = () => {
         </div>
       </footer>
 
-      {/* Floating Action Button updated for full status */}
+      {/* Floating Action Button matched to screenshot */}
       <button 
         onClick={handleApply}
-        className="fixed bottom-10 right-10 z-[60] bg-gray-500 dark:bg-slate-700 text-white px-8 py-4 rounded-full font-black shadow-xl hover:scale-105 active:scale-95 transition-all flex items-center space-x-3 group"
+        className="fixed bottom-10 right-10 z-[60] bg-indigo-700 dark:bg-indigo-600 text-white px-6 py-4 rounded-3xl font-black shadow-[0_12px_24px_-8px_rgba(79,70,229,0.5)] hover:scale-105 active:scale-95 transition-all flex items-center space-x-4 group border border-white/10"
       >
-        <div className="w-8 h-8 bg-white text-gray-500 rounded-full flex items-center justify-center font-black">
+        <div className="w-10 h-10 bg-white text-indigo-700 rounded-full flex items-center justify-center font-black text-lg">
           {spotsLeft}
         </div>
-        <span className="hidden sm:inline">BETA FULL</span>
-        <span className="sm:hidden">FULL</span>
+        <span className="text-xl tracking-tight">JOIN</span>
       </button>
 
       <style>{`
