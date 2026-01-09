@@ -98,7 +98,7 @@ export const Home: React.FC<HomeProps> = ({
         <ImageCarousel />
       </section>
 
-      {/* CTA Section updated to match screenshot exactly */}
+      {/* CTA Section - Final refinement per screenshot feedback */}
       <section className="py-20 sm:py-32 px-4 bg-indigo-600 dark:bg-indigo-700 text-white text-center relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
         <div className="max-w-4xl mx-auto relative z-10 flex flex-col items-center">
@@ -109,22 +109,17 @@ export const Home: React.FC<HomeProps> = ({
             Limited spots remaining for the inaugural pre-registration phase.
           </p>
           
-          <div className="w-full max-w-lg relative mb-12">
-            {/* Phase info label with arrow as requested */}
-            <div className="absolute -top-12 left-0 flex flex-col items-start">
-               <div className="border-2 border-indigo-950 bg-indigo-500/50 px-4 py-1.5 rounded-sm mb-1">
-                 <span className="text-[11px] font-black text-white uppercase tracking-wider">PHASE 1: {spotsLeft} SPOTS LEFT</span>
-               </div>
-               <div className="ml-2 w-0.5 h-10 bg-indigo-950 relative">
-                  <div className="absolute -top-1 -left-[5px] w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-b-[8px] border-b-indigo-950"></div>
-               </div>
-            </div>
-
-            <div className="flex justify-end mb-2">
-               <span className="text-[11px] font-black text-indigo-200 tracking-tighter">{spotsTaken}/{maxSpots}</span>
+          <div className="w-full max-w-lg mb-10">
+            <div className="flex justify-between items-end mb-2 px-1">
+               <span className="text-[11px] font-black text-white uppercase tracking-wider bg-indigo-500/30 px-3 py-1 rounded-lg">
+                 PHASE 1: {spotsLeft} SPOTS LEFT
+               </span>
+               <span className="text-[11px] font-black text-indigo-200 tracking-tighter">
+                 {spotsTaken}/{maxSpots}
+               </span>
             </div>
             
-            <div className="w-full bg-indigo-800/50 dark:bg-slate-900/40 rounded-full h-4 border border-white/10 overflow-hidden backdrop-blur-sm relative shadow-inner">
+            <div className="w-full bg-indigo-800/50 dark:bg-slate-900/40 rounded-full h-4 border border-white/10 overflow-hidden backdrop-blur-sm relative">
               <div 
                 className="h-full bg-green-400 transition-all duration-1000 ease-out shadow-[0_0_20px_rgba(74,222,128,0.5)]"
                 style={{ width: `${progressPercent}%` }}
@@ -134,13 +129,14 @@ export const Home: React.FC<HomeProps> = ({
 
           <button 
             onClick={handleApply}
-            className="group bg-white text-indigo-950 px-10 sm:px-14 py-4 sm:py-6 rounded-2xl md:rounded-2xl font-black text-xl sm:text-2xl md:text-2xl shadow-[0_20px_40px_-12px_rgba(0,0,0,0.3)] hover:scale-105 active:scale-95 transition-all border-b-4 border-gray-200 mb-12"
+            className="group bg-white text-black px-10 sm:px-14 py-4 sm:py-6 rounded-2xl md:rounded-2xl font-black text-xl sm:text-2xl md:text-2xl shadow-[0_20px_40px_-12px_rgba(0,0,0,0.4)] hover:scale-105 active:scale-95 transition-all border-b-4 border-gray-200 mb-12"
           >
             Claim Your Spot
           </button>
           
-          <div className="px-10 sm:px-12 py-3 md:py-4 border-2 border-indigo-500 bg-indigo-600/20 inline-block rounded-2xl">
-            <p className="font-black text-white text-sm sm:text-lg tracking-wide uppercase">
+          <div className="px-10 sm:px-12 py-3 md:py-4 border-2 border-indigo-500 bg-indigo-400/20 inline-block rounded-2xl">
+            {/* "Make text black" instruction applied here */}
+            <p className="font-black text-black text-sm sm:text-lg tracking-wide uppercase">
               {spotsLeft} SLOTS REMAINING - PRE-REGISTRATION LIVE
             </p>
           </div>

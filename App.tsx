@@ -10,10 +10,10 @@ import { Team } from './pages/Team';
 
 type ViewState = 'home' | 'methodology' | 'privacy' | 'terms' | 'contact' | 'about' | 'team';
 
-const GlowingDot = ({ color = "bg-green-500", pingColor = "bg-green-400" }) => (
+const GlowingDot = () => (
   <span className="relative flex h-2 w-2">
-    <span className={`animate-ping absolute inline-flex h-full w-full rounded-full ${pingColor} opacity-75`}></span>
-    <span className={`relative inline-flex rounded-full h-2 w-2 ${color}`}></span>
+    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
   </span>
 );
 
@@ -72,13 +72,13 @@ const RegistrationModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({
 };
 
 const App: React.FC = () => {
+  // Constants updated per user requirements
   const maxSpots = 500;
+  const spotsTaken = 427; // Received mails
+  const spotsLeft = maxSpots - spotsTaken; // 73
+
   const [view, setView] = useState<ViewState>('home');
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
-  // 427/500 spots taken = 73 spots left as per screenshot
-  const spotsTaken = 427;
-
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
@@ -95,7 +95,6 @@ const App: React.FC = () => {
     }
   }, [darkMode]);
 
-  const spotsLeft = maxSpots - spotsTaken;
   const progressPercent = (spotsTaken / maxSpots) * 100;
   const toggleDarkMode = () => setDarkMode(!darkMode);
 
@@ -234,9 +233,9 @@ const App: React.FC = () => {
       {/* Floating Action Button matched to screenshot */}
       <button 
         onClick={handleApply}
-        className="fixed bottom-10 right-10 z-[60] bg-indigo-700 dark:bg-indigo-600 text-white px-6 py-4 rounded-3xl font-black shadow-[0_12px_24px_-8px_rgba(79,70,229,0.5)] hover:scale-105 active:scale-95 transition-all flex items-center space-x-4 group border border-white/10"
+        className="fixed bottom-10 right-10 z-[60] bg-indigo-700 dark:bg-indigo-600 text-white px-6 py-4 rounded-[2rem] font-black shadow-2xl hover:scale-105 active:scale-95 transition-all flex items-center space-x-4 border border-white/10"
       >
-        <div className="w-10 h-10 bg-white text-indigo-700 rounded-full flex items-center justify-center font-black text-lg">
+        <div className="w-10 h-10 bg-white text-indigo-700 rounded-full flex items-center justify-center font-black text-xl">
           {spotsLeft}
         </div>
         <span className="text-xl tracking-tight">JOIN</span>
