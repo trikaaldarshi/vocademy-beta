@@ -80,6 +80,47 @@ const App: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
 
+  // Routing Logic
+  const getViewFromPath = (path: string): ViewState => {
+    const normalizedPath = path.toLowerCase().replace(/\/$/, '') || '/';
+    
+    if (normalizedPath === '/') return 'home';
+    if (normalizedPath === '/about') return 'about';
+    if (normalizedPath === '/team') return 'team';
+    if (normalizedPath === '/methodology') return 'methodology';
+    if (normalizedPath === '/contact') return 'contact';
+    if (normalizedPath === '/privacy' || normalizedPath === '/privacy-policy') return 'privacy';
+    if (normalizedPath === '/terms' || normalizedPath === '/terms-of-service') return 'terms';
+    
+    return 'home';
+  };
+
+  const getPathFromView = (viewState: ViewState): string => {
+    switch (viewState) {
+      case 'home': return '/';
+      case 'about': return '/about';
+      case 'team': return '/team';
+      case 'methodology': return '/methodology';
+      case 'contact': return '/contact';
+      case 'privacy': return '/privacy-policy';
+      case 'terms': return '/terms-of-service';
+      default: return '/';
+    }
+  };
+
+  useEffect(() => {
+    // Initial load
+    setView(getViewFromPath(window.location.pathname));
+
+    // Handle back/forward buttons
+    const handlePopState = () => {
+      setView(getViewFromPath(window.location.pathname));
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [view]);
@@ -102,6 +143,10 @@ const App: React.FC = () => {
   };
 
   const navigateTo = (newView: ViewState) => {
+    const newPath = getPathFromView(newView);
+    if (window.location.pathname !== newPath) {
+      window.history.pushState({}, '', newPath);
+    }
     setView(newView);
   };
 
