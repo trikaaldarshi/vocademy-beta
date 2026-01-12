@@ -84,14 +84,20 @@ const App: React.FC = () => {
   const getViewFromPath = (path: string): ViewState => {
     const normalizedPath = path.toLowerCase().replace(/\/$/, '') || '/';
     
-    // Mapping various potential URL patterns to the same ViewState
+    // Exact mapping for requested slugs (case-insensitive due to .toLowerCase())
     if (normalizedPath === '/' || normalizedPath === '/home') return 'home';
-    if (normalizedPath === '/about' || normalizedPath === '/about-us') return 'about';
-    if (normalizedPath === '/team' || normalizedPath === '/our-team') return 'team';
-    if (normalizedPath === '/methodology' || normalizedPath === '/method') return 'methodology';
-    if (normalizedPath === '/contact' || normalizedPath === '/contact-us') return 'contact';
-    if (['/privacy', '/privacy-policy', '/privacypolicy'].includes(normalizedPath)) return 'privacy';
-    if (['/terms', '/terms-of-service', '/termsofservice', '/tos'].includes(normalizedPath)) return 'terms';
+    if (normalizedPath === '/about-us') return 'about';
+    if (normalizedPath === '/team') return 'team';
+    if (normalizedPath === '/privacy-and-policy') return 'privacy';
+    if (normalizedPath === '/terms-and-conditions') return 'terms';
+    if (normalizedPath === '/contact-us') return 'contact';
+    
+    // Fallback for legacy variations
+    if (normalizedPath === '/about') return 'about';
+    if (normalizedPath === '/contact') return 'contact';
+    if (normalizedPath === '/privacy-policy' || normalizedPath === '/privacy') return 'privacy';
+    if (normalizedPath === '/terms-of-service' || normalizedPath === '/terms') return 'terms';
+    if (normalizedPath === '/methodology') return 'methodology';
     
     return 'home';
   };
@@ -99,20 +105,19 @@ const App: React.FC = () => {
   const getPathFromView = (viewState: ViewState): string => {
     switch (viewState) {
       case 'home': return '/';
-      case 'about': return '/about';
-      case 'team': return '/team';
-      case 'methodology': return '/methodology';
-      case 'contact': return '/contact';
-      case 'privacy': return '/privacy-policy';
-      case 'terms': return '/terms-of-service';
+      case 'about': return '/About-Us';
+      case 'team': return '/Team';
+      case 'privacy': return '/Privacy-and-policy';
+      case 'terms': return '/Terms-and-conditions';
+      case 'contact': return '/Contact-us';
+      case 'methodology': return '/Methodology';
       default: return '/';
     }
   };
 
   useEffect(() => {
-    // Sync view on initial load
-    const currentPath = window.location.pathname;
-    const initialView = getViewFromPath(currentPath);
+    // Sync view on initial load (direct URL access)
+    const initialView = getViewFromPath(window.location.pathname);
     setView(initialView);
 
     // Handle browser back/forward buttons
@@ -178,7 +183,7 @@ const App: React.FC = () => {
             </button>
             
             <div className="hidden lg:flex items-center space-x-6 mx-4">
-              <button onClick={() => navigateTo('about')} className="text-sm font-bold text-gray-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">About</button>
+              <button onClick={() => navigateTo('about')} className="text-sm font-bold text-gray-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">About Us</button>
               <button onClick={() => navigateTo('team')} className="text-sm font-bold text-gray-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Team</button>
               <button onClick={() => navigateTo('methodology')} className="text-sm font-bold text-gray-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Methodology</button>
               <button onClick={() => navigateTo('contact')} className="text-sm font-bold text-gray-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Contact</button>
@@ -251,7 +256,7 @@ const App: React.FC = () => {
               <h4 className="text-indigo-950 dark:text-white font-black uppercase tracking-widest text-sm mb-6">Explore</h4>
               <ul className="space-y-4">
                 <li><button onClick={() => navigateTo('about')} className="text-gray-500 dark:text-gray-400 hover:text-indigo-600 transition-colors font-bold">About Us</button></li>
-                <li><button onClick={() => navigateTo('team')} className="text-gray-500 dark:text-gray-400 hover:text-indigo-600 transition-colors font-bold">Meet the Team</button></li>
+                <li><button onClick={() => navigateTo('team')} className="text-gray-500 dark:text-gray-400 hover:text-indigo-600 transition-colors font-bold">Team</button></li>
                 <li><button onClick={() => navigateTo('methodology')} className="text-gray-500 dark:text-gray-400 hover:text-indigo-600 transition-colors font-bold">Methodology</button></li>
               </ul>
             </div>
