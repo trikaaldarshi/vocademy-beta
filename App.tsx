@@ -80,17 +80,18 @@ const App: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
 
-  // Routing Logic
+  // Robust Case-Insensitive Routing Logic
   const getViewFromPath = (path: string): ViewState => {
     const normalizedPath = path.toLowerCase().replace(/\/$/, '') || '/';
     
-    if (normalizedPath === '/') return 'home';
-    if (normalizedPath === '/about') return 'about';
-    if (normalizedPath === '/team') return 'team';
-    if (normalizedPath === '/methodology') return 'methodology';
-    if (normalizedPath === '/contact') return 'contact';
-    if (normalizedPath === '/privacy' || normalizedPath === '/privacy-policy') return 'privacy';
-    if (normalizedPath === '/terms' || normalizedPath === '/terms-of-service') return 'terms';
+    // Mapping various potential URL patterns to the same ViewState
+    if (normalizedPath === '/' || normalizedPath === '/home') return 'home';
+    if (normalizedPath === '/about' || normalizedPath === '/about-us') return 'about';
+    if (normalizedPath === '/team' || normalizedPath === '/our-team') return 'team';
+    if (normalizedPath === '/methodology' || normalizedPath === '/method') return 'methodology';
+    if (normalizedPath === '/contact' || normalizedPath === '/contact-us') return 'contact';
+    if (['/privacy', '/privacy-policy', '/privacypolicy'].includes(normalizedPath)) return 'privacy';
+    if (['/terms', '/terms-of-service', '/termsofservice', '/tos'].includes(normalizedPath)) return 'terms';
     
     return 'home';
   };
@@ -109,10 +110,12 @@ const App: React.FC = () => {
   };
 
   useEffect(() => {
-    // Initial load
-    setView(getViewFromPath(window.location.pathname));
+    // Sync view on initial load
+    const currentPath = window.location.pathname;
+    const initialView = getViewFromPath(currentPath);
+    setView(initialView);
 
-    // Handle back/forward buttons
+    // Handle browser back/forward buttons
     const handlePopState = () => {
       setView(getViewFromPath(window.location.pathname));
     };
