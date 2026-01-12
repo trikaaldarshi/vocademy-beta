@@ -37,7 +37,7 @@ const RegistrationModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({
         </h3>
         
         <p className="text-gray-600 dark:text-gray-400 font-medium leading-relaxed mb-8">
-          Secure your spot in the first 500 users to get 6 months of premium access for free upon launch.
+          Secure your spot in the first 500 users to get early access and exclusive benefits upon launch.
         </p>
 
         <div className="space-y-3">
@@ -72,10 +72,9 @@ const RegistrationModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({
 };
 
 const App: React.FC = () => {
-  // Constants updated per user requirements
   const maxSpots = 500;
-  const spotsTaken = 427; // Received mails
-  const spotsLeft = maxSpots - spotsTaken; // 73
+  const spotsTaken = 427;
+  const spotsLeft = maxSpots - spotsTaken;
 
   const [view, setView] = useState<ViewState>('home');
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -111,7 +110,6 @@ const App: React.FC = () => {
       
       <RegistrationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
-      {/* Navigation */}
       <div className="fixed top-4 w-full px-4 z-50">
         <nav className="max-w-6xl mx-auto bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-white/20 dark:border-slate-800 rounded-3xl shadow-[0_8px_32px_0_rgba(31,38,135,0.15)] transition-all duration-300">
           <div className="px-4 sm:px-8 h-16 flex items-center justify-between">
@@ -156,7 +154,6 @@ const App: React.FC = () => {
         </nav>
       </div>
 
-      {/* Main Content Router */}
       <main className="pt-8">
         {view === 'home' && (
           <Home 
@@ -175,7 +172,6 @@ const App: React.FC = () => {
         {view === 'team' && <Team navigateTo={navigateTo} />}
       </main>
 
-      {/* Footer */}
       <footer className="bg-white dark:bg-slate-950 pt-24 pb-12 px-4 border-t border-gray-100 dark:border-slate-900 transition-colors">
         <div className="max-w-7xl mx-auto text-center md:text-left">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
@@ -230,7 +226,6 @@ const App: React.FC = () => {
         </div>
       </footer>
 
-      {/* Floating Action Button matched to screenshot */}
       <button 
         onClick={handleApply}
         className="fixed bottom-10 right-10 z-[60] bg-indigo-700 dark:bg-indigo-600 text-white px-6 py-4 rounded-[2rem] font-black shadow-2xl hover:scale-105 active:scale-95 transition-all flex items-center space-x-4 border border-white/10"

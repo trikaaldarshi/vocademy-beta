@@ -64,7 +64,7 @@ export const About: React.FC<AboutProps> = ({ navigateTo }) => {
           />
           <Card 
             title="Exclusive Rewards" 
-            desc="Early supporters receive significant benefits, including extended premium access after launch."
+            desc="Early supporters receive significant benefits and priority access after the official launch."
           />
           <Card 
             title="Shape the Product" 

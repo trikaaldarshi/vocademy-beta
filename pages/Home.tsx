@@ -80,7 +80,7 @@ export const Home: React.FC<HomeProps> = ({
             <FeatureCard icon={<IconBrain />} title="SRS Flashcards" desc="Spaced Repetition System logic ensures you never forget a word you've learned." />
             <FeatureCard icon={<IconSwords />} title="Multiplayer Duels" desc="Battle fellow aspirants real-time to test your speed and precision under pressure." />
             <FeatureCard icon={<IconChart />} title="Progress Tracking" desc="Detailed analytics of your vocabulary strength and exam readiness." />
-            <FeatureCard icon={<IconGift />} title="Early Bird Benefits" desc="Get free premium access for 6 months after the official launch as a reward for pre-registering." />
+            <FeatureCard icon={<IconGift />} title="Early Bird Benefits" desc="Get exclusive early access and priority features as an inaugural pre-registration user." />
             <FeatureCard icon={<IconMessage />} title="Direct Support" desc="Priority telegram support and direct influence on upcoming features." />
           </div>
         </div>
@@ -98,7 +98,7 @@ export const Home: React.FC<HomeProps> = ({
         <ImageCarousel />
       </section>
 
-      {/* CTA Section - Final refinement per screenshot feedback */}
+      {/* CTA Section refined per screenshot feedback */}
       <section className="py-20 sm:py-32 px-4 bg-indigo-600 dark:bg-indigo-700 text-white text-center relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
         <div className="max-w-4xl mx-auto relative z-10 flex flex-col items-center">
@@ -135,7 +135,6 @@ export const Home: React.FC<HomeProps> = ({
           </button>
           
           <div className="px-10 sm:px-12 py-3 md:py-4 border-2 border-indigo-500 bg-indigo-400/20 inline-block rounded-2xl">
-            {/* "Make text black" instruction applied here */}
             <p className="font-black text-black text-sm sm:text-lg tracking-wide uppercase">
               {spotsLeft} SLOTS REMAINING - PRE-REGISTRATION LIVE
             </p>
