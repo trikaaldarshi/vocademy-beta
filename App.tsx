@@ -80,34 +80,62 @@ const MegaMenu: React.FC<{ isOpen: boolean; navigateTo: (view: ViewState) => voi
 };
 
 const DownloadModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => {
+  const [showIosComingSoon, setShowIosComingSoon] = useState(false);
+
+  useEffect(() => {
+    if (!isOpen) {
+      setShowIosComingSoon(false);
+    }
+  }, [isOpen]);
+
   if (!isOpen) return null;
+
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-indigo-950/20 dark:bg-black/40 backdrop-blur-xl animate-fade-in" onClick={onClose}></div>
       <div className="relative w-full max-w-md bg-white dark:bg-slate-900 border border-indigo-100 dark:border-white/10 rounded-[2.5rem] p-8 md:p-10 shadow-2xl animate-modal-pop text-center">
-        <div className="w-16 h-16 sm:w-20 sm:h-20 bg-indigo-100 dark:bg-indigo-900/30 rounded-2xl sm:rounded-3xl flex items-center justify-center mx-auto mb-6 text-indigo-600 dark:text-indigo-400 animate-float">
-          <i className="fas fa-cloud-arrow-down text-2xl sm:text-3xl"></i>
-        </div>
-        <h3 className="text-xl sm:text-3xl font-black text-indigo-950 dark:text-white mb-4 tracking-tight leading-tight">Download <br /> Vocademy App</h3>
-        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 font-medium leading-relaxed mb-6 sm:mb-8">Master your exam vocabulary with our cutting-edge AI platform.</p>
-        <div className="space-y-4">
-          <a href="https://play.google.com/store/apps/details?id=com.lakshya.vocademy&pcampaignid=web_share" target="_blank" rel="noreferrer" className="block w-full bg-indigo-600 text-white py-3.5 sm:py-4 rounded-xl sm:rounded-2xl font-black text-base sm:text-lg shadow-xl hover:bg-indigo-700 transition-all active:scale-95 flex items-center justify-center space-x-3 group">
-            <i className="fab fa-google-play group-hover:scale-110 transition-transform"></i>
-            <span>Google Play Store</span>
-          </a>
-          
-          <div className="relative group cursor-not-allowed">
-            <div className="absolute -top-2 -right-2 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400 text-[8px] sm:text-[10px] font-black px-2 py-0.5 rounded-full border border-indigo-200 dark:border-indigo-800 z-10 shadow-sm">
-              COMING SOON
+        
+        {showIosComingSoon ? (
+          <div className="animate-fade-in">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-indigo-50/50 dark:bg-indigo-900/20 rounded-2xl sm:rounded-[1.5rem] flex items-center justify-center mx-auto mb-6 text-indigo-600 dark:text-indigo-400 shadow-sm border border-indigo-100/50 dark:border-indigo-800/30">
+              <i className="fab fa-apple text-3xl sm:text-4xl"></i>
             </div>
-            <div className="block w-full bg-gray-100 dark:bg-slate-800 text-gray-400 dark:text-gray-500 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl font-black text-base sm:text-lg border-2 border-dashed border-gray-200 dark:border-slate-700 flex items-center justify-center space-x-3 opacity-80">
-              <i className="fab fa-apple"></i>
-              <span>Apple App Store</span>
-            </div>
+            <h3 className="text-xl sm:text-3xl font-black text-indigo-950 dark:text-white mb-4 tracking-tight leading-tight">iOS App Coming Soon</h3>
+            <p className="text-sm sm:text-base text-gray-500 dark:text-gray-400 font-medium leading-relaxed mb-8 px-2">
+              We are currently focusing on perfecting the Android experience. The iOS version of Vocademy is under development and will be available on the App Store soon!
+            </p>
+            <button 
+              onClick={() => setShowIosComingSoon(false)}
+              className="w-full bg-indigo-600 dark:bg-indigo-500 text-white py-4 rounded-xl sm:rounded-2xl font-black text-base sm:text-lg shadow-xl hover:bg-indigo-700 transition-all active:scale-95"
+            >
+              Understood
+            </button>
           </div>
+        ) : (
+          <>
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-indigo-600 rounded-2xl sm:rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-xl animate-float">
+              <span className="text-white font-black text-3xl sm:text-4xl">V</span>
+            </div>
+            <h3 className="text-xl sm:text-3xl font-black text-indigo-950 dark:text-white mb-4 tracking-tight leading-tight">Download <br /> Vocademy App</h3>
+            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 font-medium leading-relaxed mb-6 sm:mb-8">Master your exam vocabulary with our cutting-edge AI platform.</p>
+            <div className="space-y-4">
+              <a href="https://play.google.com/store/apps/details?id=com.lakshya.vocademy&pcampaignid=web_share" target="_blank" rel="noreferrer" className="block w-full bg-indigo-600 text-white py-3.5 sm:py-4 rounded-xl sm:rounded-2xl font-black text-base sm:text-lg shadow-xl hover:bg-indigo-700 transition-all active:scale-95 flex items-center justify-center space-x-3 group">
+                <i className="fab fa-google-play group-hover:scale-110 transition-transform"></i>
+                <span>Google Play Store</span>
+              </a>
+              
+              <button 
+                onClick={() => setShowIosComingSoon(true)}
+                className="block w-full bg-gray-50 dark:bg-slate-800/50 text-gray-500 dark:text-gray-400 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl font-black text-base sm:text-lg border-2 border-gray-200 dark:border-slate-700 flex items-center justify-center space-x-3 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors group active:scale-95"
+              >
+                <i className="fab fa-apple group-hover:scale-110 transition-transform"></i>
+                <span>Apple App Store</span>
+              </button>
 
-          <button onClick={onClose} className="block w-full py-3 sm:py-4 text-gray-500 dark:text-gray-400 font-bold hover:opacity-70 transition-opacity text-sm sm:text-base mt-2">Back to Site</button>
-        </div>
+              <button onClick={onClose} className="block w-full py-3 sm:py-4 text-gray-400 dark:text-gray-500 font-bold hover:opacity-70 transition-opacity text-sm sm:text-base mt-2">Back to Site</button>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
@@ -270,7 +298,6 @@ const App: React.FC = () => {
         </div>
       </footer>
 
-      {/* Simplified Sticky Bottom Button: Circular DOWNLOAD pill */}
       <button 
         onClick={handleDownload}
         className="fixed bottom-4 sm:bottom-10 right-4 sm:right-10 z-[60] flex items-center bg-indigo-700 dark:bg-indigo-600 text-white px-5 sm:px-8 py-3.5 sm:py-4 rounded-full font-black shadow-[0_15px_40px_-10px_rgba(79,70,229,0.5)] hover:scale-105 active:scale-95 transition-all border border-white/20 group backdrop-blur-sm"
