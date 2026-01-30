@@ -4,6 +4,16 @@ import React from 'react';
 export const Privacy: React.FC = () => {
   return (
     <div className="pt-32 pb-24 px-4 max-w-5xl mx-auto animate-fade-in transition-colors duration-300">
+      <style>{`
+        @keyframes pulse-aura {
+          0%, 100% { opacity: 0.1; transform: scale(1); }
+          50% { opacity: 0.2; transform: scale(1.05); }
+        }
+        .animate-pulse-aura {
+          animation: pulse-aura 5s ease-in-out infinite;
+        }
+      `}</style>
+
       {/* Policy Header */}
       <div className="text-center mb-16 md:mb-24">
         <div className="inline-flex items-center space-x-2 bg-indigo-50 dark:bg-indigo-950/30 text-indigo-600 dark:text-indigo-400 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest mb-6 border border-indigo-100 dark:border-indigo-800 shadow-sm">
@@ -27,7 +37,7 @@ export const Privacy: React.FC = () => {
         
         <div className="max-w-4xl mx-auto p-6 md:p-10 bg-white dark:bg-slate-900/50 rounded-[2.5rem] border border-indigo-50 dark:border-slate-800 shadow-2xl relative overflow-hidden group">
           <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700"></div>
-          <p className="text-lg md:text-xl text-indigo-900 dark:text-indigo-300 font-black mb-4 leading-tight">Welcome to Vocademy.</p>
+          <p className="text-lg md:text-xl text-indigo-900 dark:text-indigo-300 font-black mb-4 leading-tight text-center">Welcome to Vocademy.</p>
           <div className="text-gray-600 dark:text-gray-400 font-medium text-base leading-relaxed text-left space-y-4">
             <p>
               Your privacy is extremely important to us, and we are committed to protecting your personal information and being transparent about how your data is used. This Privacy Policy explains how Vocademy collects, uses, stores, and safeguards your information when you use our mobile application and website.
@@ -49,7 +59,7 @@ export const Privacy: React.FC = () => {
             <h2 className="text-2xl md:text-3xl font-black text-indigo-950 dark:text-white tracking-tight">Our Privacy Philosophy</h2>
           </div>
           <div className="bg-white dark:bg-slate-900 p-8 md:p-12 rounded-[2.5rem] border border-gray-100 dark:border-slate-800 shadow-xl">
-            <p className="text-indigo-900 dark:text-indigo-300 font-bold text-lg mb-8 text-center">At Vocademy, we strongly believe that:</p>
+            <p className="text-indigo-900 dark:text-indigo-300 font-bold text-lg mb-8 text-center uppercase tracking-widest">At Vocademy, we strongly believe that:</p>
             <div className="grid md:grid-cols-3 gap-8">
               <PhilosophyItem icon="fa-user-shield" title="Safe & Respectful" text="Learning should be safe and respectful" />
               <PhilosophyItem icon="fa-filter" title="Minimal Data" text="User data should be collected minimally" />
@@ -117,7 +127,7 @@ export const Privacy: React.FC = () => {
           </div>
         </section>
 
-        {/* How We Use Your Information */}
+        {/* Use of Information */}
         <section>
           <div className="grid md:grid-cols-2 gap-8">
             <FeatureBlock 
@@ -187,8 +197,8 @@ export const Privacy: React.FC = () => {
                 <p>Vocademy uses <b>Google AdMob</b> to display advertisements within the app. These advertisements help us keep the app free and cover operational costs (server, AI services, etc.).</p>
                 <ul className="list-disc pl-5 space-y-2 font-medium">
                   <li><b>Personalized Advertising:</b> Google and its partners may use cookies or unique device identifiers to serve ads based on your visits to our app and other websites on the internet.</li>
-                  <li><b>Opt-Out:</b> You can opt out of personalized advertising by visiting Google's Ad Settings or by using your device's privacy settings.</li>
-                  <li><b>Data Collection:</b> AdMob may collect and use certain data in accordance with Google’s Privacy Policy.</li>
+                  <li><b>Opt-Out:</b> You can opt out of personalized advertising by visiting Google's Ad Settings or by using your device's privacy settings (e.g., "Limit Ad Tracking" on iOS or "Opt out of Interest-Based Ads" on Android).</li>
+                  <li><b>Data Collection:</b> AdMob may collect and use certain data, such as device identifiers and location data, in accordance with [Google’s Privacy Policy](https://policies.google.com/privacy).</li>
                 </ul>
               </div>
             </div>
@@ -222,7 +232,7 @@ export const Privacy: React.FC = () => {
                    Refund Policy
                  </h4>
                  <div className="p-5 bg-orange-50/50 dark:bg-orange-950/20 rounded-2xl border border-orange-100 dark:border-orange-900/40 text-sm text-gray-600 dark:text-gray-400 font-medium leading-relaxed">
-                   In addition to Google Play's standard refund window, Vocademy offers an extended money-back guarantee: <b>3 days for Monthly plans</b> and <b>7 days for Yearly plans</b>. If you are not satisfied, please contact our support team with your Order ID.
+                   In addition to Google Play's standard refund window, Vocademy offers an extended money-back guarantee: <b>3 days</b> for Monthly plans and <b>7 days</b> for Yearly plans. If you are not satisfied, please contact our support team with your Order ID within this period. In case of any policy contradiction, Google Play's official policy and terms will take precedence.
                  </div>
                </div>
              </div>
@@ -237,7 +247,7 @@ export const Privacy: React.FC = () => {
               Email Communication
             </h3>
             <p className="text-gray-600 dark:text-gray-400 font-medium leading-relaxed text-sm">
-              When you contact Vocademy for support, feedback, or queries, we usually respond from our official support email addresses. Please treat emails from these addresses as valid only for Vocademy-related communication.
+              When you contact Vocademy for support, feedback, or queries, we usually respond from our official support email addresses. All our official email addresses are listed in the Contact Us section below. Please treat emails from these addresses as valid only for Vocademy-related communication.
             </p>
           </section>
 
@@ -264,7 +274,7 @@ export const Privacy: React.FC = () => {
               Data Retention
             </h3>
             <p className="text-gray-600 dark:text-gray-400 font-medium leading-relaxed text-sm">
-              We retain user data only for as long as necessary to provide services, maintain learning history, and comply with legal obligations. When data is no longer required, it is securely deleted or anonymized.
+              We retain user data only for as long as necessary to provide services, maintain learning history, and comply with legal obligations. When data is no longer required, it is securely deleted or anonymized where appropriate.
             </p>
           </section>
           <section className="bg-white dark:bg-slate-900 p-8 rounded-[2.5rem] border border-gray-100 dark:border-slate-800 shadow-xl">
@@ -273,27 +283,52 @@ export const Privacy: React.FC = () => {
               Children’s Privacy
             </h3>
             <p className="text-gray-600 dark:text-gray-400 font-medium leading-relaxed text-sm">
-              Vocademy is not knowingly intended for children under 13. If you believe a child has provided personal data, please contact us immediately and we will take appropriate action.
+              Vocademy is not knowingly intended for children under the age of 13. We do not knowingly collect personal information from children. If you believe that a child has provided personal data, please contact us immediately and we will take appropriate action.
             </p>
           </section>
         </div>
 
-        {/* Legal & Changes */}
-        <section className="bg-indigo-50/50 dark:bg-indigo-950/20 p-10 rounded-[2.5rem] border border-indigo-100 dark:border-indigo-900/40">
-           <div className="grid md:grid-cols-2 gap-12 items-center">
-             <div>
-               <h3 className="text-2xl font-black text-indigo-950 dark:text-white mb-4">Legal Compliance & Changes</h3>
-               <div className="space-y-4 text-gray-600 dark:text-gray-400 font-medium text-sm leading-relaxed">
-                 <p>Vocademy complies with applicable data protection and privacy laws. We may disclose information only when required by law or to protect safety.</p>
-                 <p className="italic">Any changes will be posted on this page with an updated effective date. Continued use of Vocademy after changes indicates acceptance of the updated policy.</p>
-               </div>
+        {/* Legal & Changes - Professionalized Animation Section */}
+        <section className="space-y-12">
+          {/* Legal Compliance */}
+          <div className="bg-indigo-50/50 dark:bg-indigo-950/20 p-10 rounded-[2.5rem] border border-indigo-100 dark:border-indigo-900/40 relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-indigo-500/5 rounded-full blur-[80px] -mr-40 -mt-40 animate-pulse-aura"></div>
+            <div className="grid md:grid-cols-3 gap-10 items-center relative z-10">
+              <div className="md:col-span-2">
+                <h3 className="text-2xl font-black text-indigo-950 dark:text-white mb-6 uppercase tracking-tight flex items-center">
+                   <div className="w-1.5 h-6 bg-indigo-600 mr-4 rounded-full"></div>
+                   Legal Compliance
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400 font-medium text-base leading-relaxed">
+                  Vocademy complies with applicable data protection and privacy laws. We may disclose information only when required to do so by law or to protect our legal rights and users’ safety.
+                </p>
+              </div>
+              <div className="flex justify-center md:justify-end">
+                <div className="w-24 h-24 bg-white dark:bg-slate-900 rounded-[2rem] flex items-center justify-center shadow-[0_20px_60px_-15px_rgba(79,70,229,0.2)] animate-float">
+                  <i className="fas fa-scale-balanced text-indigo-600 text-5xl animate-pulse-soft"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Changes to Policy */}
+          <div className="bg-white dark:bg-slate-900 p-10 rounded-[2.5rem] border border-gray-100 dark:border-slate-800 shadow-xl group">
+             <h3 className="text-2xl font-black text-indigo-950 dark:text-white mb-6 uppercase tracking-tight flex items-center">
+                <div className="w-1.5 h-6 bg-emerald-500 mr-4 rounded-full"></div>
+                Changes to This Privacy Policy
+             </h3>
+             <div className="space-y-6 text-gray-600 dark:text-gray-400 font-medium text-base leading-relaxed">
+               <p>We may update this Privacy Policy from time to time to reflect:</p>
+               <ul className="list-disc pl-5 space-y-3">
+                 <li>Changes in features</li>
+                 <li>Legal or regulatory requirements</li>
+                 <li>Improvements in privacy practices</li>
+               </ul>
+               <p className="italic bg-gray-50 dark:bg-slate-950 p-4 rounded-xl border border-gray-100 dark:border-slate-800">
+                 Any changes will be posted on this page with an updated effective date. Continued use of Vocademy after changes indicates acceptance of the updated policy.
+               </p>
              </div>
-             <div className="flex justify-center md:justify-end">
-               <div className="w-24 h-24 bg-white dark:bg-slate-900 rounded-[2rem] flex items-center justify-center shadow-2xl animate-wiggle">
-                 <i className="fas fa-scale-balanced text-indigo-600 text-5xl"></i>
-               </div>
-             </div>
-           </div>
+          </div>
         </section>
 
         {/* Contact Us */}
