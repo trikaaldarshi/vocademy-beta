@@ -6,7 +6,6 @@ const APP_SCREENS = [
     desc: "Master high-yield words like 'Diligent' with deep context, Hindi meanings, and exam-focused usage examples.",
     img: "https://raw.githubusercontent.com/trikaaldarshi/Assets/refs/heads/main/1_20251223_234831_0000.png",
     accent: "bg-indigo-600",
-    color: "indigo",
     icon: "fa-calendar-day"
   },
   {
@@ -14,7 +13,6 @@ const APP_SCREENS = [
     desc: "A full suite of assessments: Daily Drills, Weekly Wrap-ups, and Monthly Mastery tests to track your progress.",
     img: "https://raw.githubusercontent.com/trikaaldarshi/Assets/refs/heads/main/2_20251223_234831_0001.png",
     accent: "bg-emerald-600",
-    color: "emerald",
     icon: "fa-list-check"
   },
   {
@@ -22,7 +20,6 @@ const APP_SCREENS = [
     desc: "Fast-paced practice for synonyms and antonyms. Choose between 'Self Test' or 'Multiplayer Duel'.",
     img: "https://raw.githubusercontent.com/trikaaldarshi/Assets/refs/heads/main/3_20251223_234831_0002.png",
     accent: "bg-orange-600",
-    color: "orange",
     icon: "fa-bolt"
   },
   {
@@ -30,7 +27,6 @@ const APP_SCREENS = [
     desc: "Earn prestigious badges like 'Lexis Monarch' and 'Vocabulary Beast' as you climb to Level 100.",
     img: "https://raw.githubusercontent.com/trikaaldarshi/Assets/refs/heads/main/4_20251223_234831_0003.png",
     accent: "bg-purple-600",
-    color: "purple",
     icon: "fa-trophy"
   },
   {
@@ -38,7 +34,6 @@ const APP_SCREENS = [
     desc: "Battle real-time with fellow aspirants and gain XP for every outstanding performance.",
     img: "https://raw.githubusercontent.com/trikaaldarshi/Assets/refs/heads/main/4_20251221_202429_0003.png",
     accent: "bg-blue-600",
-    color: "blue",
     icon: "fa-medal"
   }
 ];
@@ -57,23 +52,14 @@ export const ImageCarousel: React.FC = () => {
     return () => clearInterval(timer);
   }, [currentIndex]);
 
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStart.current = e.targetTouches[0].clientX;
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    touchEnd.current = e.targetTouches[0].clientX;
-  };
-
+  const handleTouchStart = (e: React.TouchEvent) => { touchStart.current = e.targetTouches[0].clientX; };
+  const handleTouchMove = (e: React.TouchEvent) => { touchEnd.current = e.targetTouches[0].clientX; };
   const handleTouchEnd = () => {
     if (!touchStart.current || !touchEnd.current) return;
     const distance = touchStart.current - touchEnd.current;
     if (Math.abs(distance) > 50) {
-      if (distance > 0) {
-        setCurrentIndex((prev) => (prev + 1) % APP_SCREENS.length);
-      } else {
-        setCurrentIndex((prev) => (prev - 1 + APP_SCREENS.length) % APP_SCREENS.length);
-      }
+      if (distance > 0) setCurrentIndex((prev) => (prev + 1) % APP_SCREENS.length);
+      else setCurrentIndex((prev) => (prev - 1 + APP_SCREENS.length) % APP_SCREENS.length);
     }
     touchStart.current = null;
     touchEnd.current = null;
@@ -84,131 +70,99 @@ export const ImageCarousel: React.FC = () => {
       <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
         {/* Phone Mockup Section */}
         <div 
-          className="relative mx-auto w-full max-w-[240px] xs:max-w-[280px] sm:max-w-[340px] h-[480px] xs:h-[560px] sm:h-[680px] bg-slate-800 rounded-[2rem] xs:rounded-[2.5rem] sm:rounded-[3.5rem] border-[6px] xs:border-[8px] sm:border-[12px] border-slate-800 shadow-2xl overflow-hidden ring-1 ring-white/10 group/phone transition-transform duration-700 select-none"
+          className="relative mx-auto w-full max-w-[280px] sm:max-w-[340px] aspect-[9/19] bg-slate-800 rounded-[2.5rem] sm:rounded-[3.5rem] border-[8px] sm:border-[12px] border-slate-800 shadow-2xl overflow-hidden ring-1 ring-white/10 select-none"
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
           {/* Notch */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 xs:w-32 sm:w-40 h-5 xs:h-6 sm:h-7 bg-slate-800 rounded-b-xl xs:rounded-b-2xl sm:rounded-b-3xl z-40 shadow-sm border-x border-b border-white/5"></div>
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 sm:w-40 h-6 sm:h-7 bg-slate-800 rounded-b-2xl sm:rounded-b-3xl z-40"></div>
           
-          <div className="h-full w-full relative bg-gray-200 dark:bg-slate-950 overflow-hidden">
+          <div className="h-full w-full relative bg-gray-100 dark:bg-slate-950 overflow-hidden">
             {APP_SCREENS.map((screen, idx) => {
               const isActive = idx === currentIndex;
-              const isPast = (currentIndex === 0 && idx === APP_SCREENS.length - 1) || (idx < currentIndex);
-              
-              // Only load current, previous and next images to save bandwidth
-              const shouldLoad = Math.abs(idx - currentIndex) <= 1 || 
-                               (currentIndex === 0 && idx === APP_SCREENS.length - 1) || 
-                               (currentIndex === APP_SCREENS.length - 1 && idx === 0);
+              // Performance Optimization: Only render the current, next, and previous images
+              const isAdjacent = Math.abs(idx - currentIndex) <= 1 || 
+                                (currentIndex === 0 && idx === APP_SCREENS.length - 1) || 
+                                (currentIndex === APP_SCREENS.length - 1 && idx === 0);
+
+              if (!isAdjacent) return null;
 
               return (
                 <div
                   key={idx}
-                  className={`absolute inset-0 transition-all duration-[1000ms] cubic-bezier-sophisticated ${
-                    isActive 
-                      ? 'opacity-100 translate-y-0 scale-100 z-30 pointer-events-auto' 
-                      : isPast
-                        ? 'opacity-0 -translate-y-8 scale-110 z-10 pointer-events-none blur-sm' 
-                        : 'opacity-0 translate-y-16 scale-90 z-20 pointer-events-none blur-sm'
+                  className={`absolute inset-0 transition-all duration-[8000ms] ease-out ${
+                    isActive ? 'opacity-100 scale-100 z-30' : 'opacity-0 scale-110 z-10'
                   }`}
+                  style={{ transitionProperty: 'opacity, transform', transitionDuration: '1000ms' }}
                 >
-                  <div className="h-full w-full relative">
-                    {shouldLoad && (
-                      <img 
-                        src={screen.img} 
-                        className={`w-full h-full object-cover transition-transform duration-[8000ms] ease-out ${isActive ? 'scale-105 sm:scale-110' : 'scale-120 sm:scale-125'}`} 
-                        alt={screen.title} 
-                        // First image gets priority to fix LCP
-                        {...(idx === 0 ? { fetchpriority: "high" } : { loading: "lazy" })}
-                      />
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
-                    
-                    {/* Floating Info Card */}
-                    <div className={`absolute bottom-4 xs:bottom-6 sm:bottom-8 left-3 xs:left-4 sm:left-6 right-3 xs:right-4 sm:right-6 transition-all duration-1000 delay-200 ${isActive ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                      <div className="bg-white/10 backdrop-blur-xl p-3 xs:p-4 sm:p-6 rounded-xl xs:rounded-[1.5rem] sm:rounded-[2rem] border border-white/20 shadow-2xl">
-                         <span className={`inline-block px-1.5 xs:px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-[8px] xs:text-[9px] sm:text-[10px] font-black text-white mb-1.5 xs:mb-2 sm:mb-3 uppercase tracking-widest ${screen.accent}`}>
-                           V-Beta
-                         </span>
-                         <p className="text-white text-base xs:text-lg sm:text-xl font-black mb-1 leading-tight">{screen.title}</p>
-                         <p className="text-white/80 text-[8px] xs:text-[10px] sm:text-xs font-medium leading-relaxed line-clamp-2">{screen.desc}</p>
-                      </div>
+                  <img 
+                    src={screen.img} 
+                    className="w-full h-full object-cover" 
+                    alt={screen.title}
+                    width="340"
+                    height="680"
+                    loading={idx === 0 ? "eager" : "lazy"}
+                    {...(idx === 0 ? { fetchpriority: "high" } : {})}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                  
+                  <div className={`absolute bottom-8 left-6 right-6 transition-all duration-700 delay-200 ${isActive ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
+                    <div className="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/20 shadow-xl">
+                       <p className="text-white text-lg font-black mb-1">{screen.title}</p>
+                       <p className="text-white/80 text-[10px] sm:text-xs font-medium leading-relaxed line-clamp-2">{screen.desc}</p>
                     </div>
                   </div>
                 </div>
               );
             })}
           </div>
-
-          {/* Mobile Swipe Indicator */}
-          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-1 z-50 lg:hidden">
-            {APP_SCREENS.map((_, idx) => (
-              <div 
-                key={idx} 
-                className={`h-0.5 xs:h-1 rounded-full transition-all duration-300 ${idx === currentIndex ? 'w-3 xs:w-4 bg-white' : 'w-1 bg-white/30'}`}
-              />
-            ))}
-          </div>
         </div>
 
         {/* Feature List Section */}
-        <div className="space-y-3 xs:space-y-4 sm:space-y-6 mt-6 xs:mt-8 lg:mt-0">
+        <div className="space-y-4 sm:space-y-6">
           {APP_SCREENS.map((screen, idx) => {
             const isActive = idx === currentIndex;
             return (
-              <div 
+              <button 
                 key={idx} 
-                className={`relative transition-all duration-[500ms] cubic-bezier-sophisticated cursor-pointer p-4 xs:p-5 sm:p-8 rounded-[1.5rem] xs:rounded-[2rem] sm:rounded-[3rem] border-2 group active:scale-[0.98] lg:active:scale-100 ${
+                className={`w-full text-left relative transition-all duration-500 p-5 sm:p-8 rounded-[2rem] sm:rounded-[3rem] border-2 group ${
                   isActive 
-                    ? 'bg-white dark:bg-slate-900 border-indigo-200 dark:border-indigo-500/30 shadow-[0_15px_40px_rgba(79,70,229,0.1)] lg:translate-x-6' 
-                    : 'bg-transparent border-transparent opacity-40 hover:opacity-70 lg:hover:translate-x-3'
+                    ? 'bg-white dark:bg-slate-900 border-indigo-200 dark:border-indigo-500/30 shadow-lg lg:translate-x-4' 
+                    : 'bg-transparent border-transparent opacity-40 hover:opacity-70'
                 }`}
                 onClick={() => setCurrentIndex(idx)}
+                aria-label={`Select ${screen.title} feature`}
               >
-                {/* Visual Progress Line */}
-                {isActive && (
-                  <div className="absolute bottom-0 left-6 xs:left-8 right-6 xs:right-8 h-1 bg-gray-100 dark:bg-slate-800 rounded-full overflow-hidden mb-[-1px]">
-                    <div 
-                      className="h-full bg-indigo-600 dark:bg-indigo-500 rounded-full"
-                      style={{ 
-                        animation: `progress-line ${ROTATION_TIME}ms linear forwards`
-                      }}
-                    />
+                <div className="flex items-center space-x-5 sm:space-x-8">
+                  <div className={`w-12 h-12 sm:w-16 sm:h-16 rounded-2xl sm:rounded-3xl flex-shrink-0 flex items-center justify-center text-white ${screen.accent} ${isActive ? 'scale-110 shadow-lg' : 'grayscale opacity-50'}`}>
+                    <i className={`fas ${screen.icon} text-base sm:text-2xl`}></i>
                   </div>
-                )}
-
-                <div className="flex items-center lg:items-start space-x-3 xs:space-x-5 sm:space-x-8 relative z-10">
-                  <div className={`w-10 h-10 xs:w-12 xs:h-12 sm:w-16 sm:h-16 rounded-xl xs:rounded-2xl sm:rounded-3xl flex-shrink-0 flex items-center justify-center text-white font-black text-lg xs:text-xl sm:text-2xl transition-all duration-[700ms] cubic-bezier-sophisticated ${screen.accent} ${isActive ? 'scale-110 shadow-lg rotate-0' : 'grayscale opacity-30 rotate-6'}`}>
-                    <i className={`fas ${screen.icon} text-sm xs:text-base sm:text-2xl`}></i>
-                  </div>
-                  <div className="pt-0 lg:pt-1 overflow-hidden">
-                    <h3 className={`text-base xs:text-xl sm:text-2xl font-black transition-all duration-300 ${isActive ? 'text-indigo-950 dark:text-white' : 'text-gray-400 dark:text-gray-600'}`}>
+                  <div className="overflow-hidden">
+                    <h3 className={`text-lg sm:text-2xl font-black transition-colors ${isActive ? 'text-indigo-950 dark:text-white' : 'text-gray-400'}`}>
                       {screen.title}
                     </h3>
-                    <p className={`font-medium text-[10px] xs:text-sm sm:text-base mt-0.5 xs:mt-1 sm:mt-2 leading-relaxed line-clamp-1 xs:line-clamp-2 lg:line-clamp-none transition-all duration-300 ${isActive ? 'text-gray-600 dark:text-gray-400' : 'text-gray-300 dark:text-gray-700'}`}>
+                    <p className={`font-medium text-xs sm:text-base mt-1 line-clamp-1 sm:line-clamp-none transition-colors ${isActive ? 'text-gray-600 dark:text-gray-400' : 'text-gray-300'}`}>
                       {screen.desc}
                     </p>
                   </div>
                 </div>
-              </div>
+                {isActive && (
+                  <div className="absolute bottom-0 left-8 right-8 h-1 bg-gray-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                    <div 
+                      className="h-full bg-indigo-600 dark:bg-indigo-500"
+                      style={{ animation: `progress-line ${ROTATION_TIME}ms linear forwards` }}
+                    />
+                  </div>
+                )}
+              </button>
             );
           })}
         </div>
       </div>
 
       <style>{`
-        .cubic-bezier-sophisticated {
-          transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
-        }
-        @keyframes progress-line {
-          from { width: 0%; }
-          to { width: 100%; }
-        }
-        .select-none {
-          -webkit-user-select: none;
-          user-select: none;
-        }
+        @keyframes progress-line { from { width: 0%; } to { width: 100%; } }
       `}</style>
     </div>
   );
