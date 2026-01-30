@@ -210,7 +210,7 @@ const App: React.FC = () => {
       <div className="fixed top-2 sm:top-4 w-full px-2 sm:px-4 z-50">
         <nav className="max-w-6xl mx-auto bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-white/20 dark:border-slate-800 rounded-2xl sm:rounded-3xl shadow-[0_8px_32px_0_rgba(31,38,135,0.15)] transition-all duration-300">
           <div className="px-3 sm:px-8 h-14 sm:h-16 flex items-center justify-between relative">
-            <button onClick={() => navigateTo('home')} className="flex items-center space-x-1.5 sm:space-x-2 group active:scale-95 transition-transform">
+            <button onClick={() => navigateTo('home')} className="flex items-center space-x-1.5 sm:space-x-2 group active:scale-95 transition-transform" aria-label="Vocademy Home">
               <div className="w-8 h-8 sm:w-10 sm:h-10 bg-indigo-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-lg group-hover:rotate-6 transition-transform">
                 <span className="text-white font-black text-base sm:text-xl">V</span>
               </div>
@@ -231,7 +231,11 @@ const App: React.FC = () => {
             </div>
 
             <div className="flex items-center space-x-2 sm:space-x-4">
-              <button onClick={toggleDarkMode} className="p-1.5 w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center hover:bg-indigo-50 dark:hover:bg-indigo-900/30 text-gray-500 dark:text-gray-400 transition-all">
+              <button 
+                onClick={toggleDarkMode} 
+                className="p-1.5 w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center hover:bg-indigo-50 dark:hover:bg-indigo-900/30 text-gray-500 dark:text-gray-400 transition-all"
+                aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+              >
                 {darkMode ? <i className="fas fa-sun text-base sm:text-lg text-yellow-500"></i> : <i className="fas fa-moon text-base sm:text-lg"></i>}
               </button>
               
@@ -240,6 +244,8 @@ const App: React.FC = () => {
                   onClick={() => setIsMegaMenuOpen(!isMegaMenuOpen)}
                   onMouseEnter={() => window.innerWidth > 1024 && setIsMegaMenuOpen(true)}
                   className="bg-indigo-600 dark:bg-indigo-500 text-white w-8 h-8 sm:w-11 sm:h-11 rounded-lg sm:rounded-2xl transition-all shadow-md active:scale-95 flex items-center justify-center group"
+                  aria-label="Open navigation menu"
+                  aria-expanded={isMegaMenuOpen}
                 >
                   <i className={`fas fa-bars-staggered text-sm sm:text-base group-hover:scale-110 transition-transform ${isMegaMenuOpen ? 'rotate-90' : ''}`}></i>
                 </button>
@@ -271,8 +277,24 @@ const App: React.FC = () => {
               </div>
               <p className="text-gray-500 dark:text-gray-400 text-base sm:text-lg max-w-sm mx-auto md:mx-0 leading-relaxed mb-6 sm:mb-8 font-medium">The most advanced AI-powered vocabulary platform for competitive exam ecosystem.</p>
               <div className="flex justify-center md:justify-start space-x-4">
-                <a href="https://telegram.dog/VocademyApp" className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-100 dark:bg-slate-900 rounded-full flex items-center justify-center text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 transition-all hover:scale-110 shadow-sm"><i className="fab fa-telegram-plane text-lg sm:text-xl"></i></a>
-                <a href="https://X.com/VocademyApp" className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-100 dark:bg-slate-900 rounded-full flex items-center justify-center text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 transition-all hover:scale-110 shadow-sm"><i className="fab fa-twitter text-lg sm:text-xl"></i></a>
+                <a 
+                  href="https://telegram.dog/VocademyApp" 
+                  className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-100 dark:bg-slate-900 rounded-full flex items-center justify-center text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 transition-all hover:scale-110 shadow-sm"
+                  aria-label="Vocademy on Telegram"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i className="fab fa-telegram-plane text-lg sm:text-xl"></i>
+                </a>
+                <a 
+                  href="https://X.com/VocademyApp" 
+                  className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-100 dark:bg-slate-900 rounded-full flex items-center justify-center text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 transition-all hover:scale-110 shadow-sm"
+                  aria-label="Vocademy on X"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i className="fab fa-twitter text-lg sm:text-xl"></i>
+                </a>
               </div>
             </div>
             <div>
@@ -301,6 +323,7 @@ const App: React.FC = () => {
       <button 
         onClick={handleDownload}
         className="fixed bottom-4 sm:bottom-10 right-4 sm:right-10 z-[60] flex items-center bg-indigo-700 dark:bg-indigo-600 text-white px-5 sm:px-8 py-3.5 sm:py-4 rounded-full font-black shadow-[0_15px_40px_-10px_rgba(79,70,229,0.5)] hover:scale-105 active:scale-95 transition-all border border-white/20 group backdrop-blur-sm"
+        aria-label="Download Vocademy App"
       >
         <i className="fas fa-download mr-2 sm:mr-3 group-hover:translate-y-1 transition-transform"></i>
         <span className="text-xs sm:text-lg tracking-tight uppercase">DOWNLOAD</span>
