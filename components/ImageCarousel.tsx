@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 
 const APP_SCREENS = [
@@ -69,15 +68,13 @@ export const ImageCarousel: React.FC = () => {
   const handleTouchEnd = () => {
     if (!touchStart.current || !touchEnd.current) return;
     const distance = touchStart.current - touchEnd.current;
-    const isLeftSwipe = distance > 50;
-    const isRightSwipe = distance < -50;
-
-    if (isLeftSwipe) {
-      setCurrentIndex((prev) => (prev + 1) % APP_SCREENS.length);
-    } else if (isRightSwipe) {
-      setCurrentIndex((prev) => (prev - 1 + APP_SCREENS.length) % APP_SCREENS.length);
+    if (Math.abs(distance) > 50) {
+      if (distance > 0) {
+        setCurrentIndex((prev) => (prev + 1) % APP_SCREENS.length);
+      } else {
+        setCurrentIndex((prev) => (prev - 1 + APP_SCREENS.length) % APP_SCREENS.length);
+      }
     }
-
     touchStart.current = null;
     touchEnd.current = null;
   };
@@ -87,7 +84,7 @@ export const ImageCarousel: React.FC = () => {
       <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
         {/* Phone Mockup Section */}
         <div 
-          className="relative mx-auto w-full max-w-[240px] xs:max-w-[280px] sm:max-w-[340px] h-[480px] xs:h-[560px] sm:h-[680px] bg-slate-900 rounded-[2rem] xs:rounded-[2.5rem] sm:rounded-[3.5rem] border-[6px] xs:border-[8px] sm:border-[12px] border-slate-800 shadow-2xl overflow-hidden ring-1 ring-white/10 group/phone transition-transform duration-700 select-none"
+          className="relative mx-auto w-full max-w-[240px] xs:max-w-[280px] sm:max-w-[340px] h-[480px] xs:h-[560px] sm:h-[680px] bg-slate-800 rounded-[2rem] xs:rounded-[2.5rem] sm:rounded-[3.5rem] border-[6px] xs:border-[8px] sm:border-[12px] border-slate-800 shadow-2xl overflow-hidden ring-1 ring-white/10 group/phone transition-transform duration-700 select-none"
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
@@ -95,11 +92,16 @@ export const ImageCarousel: React.FC = () => {
           {/* Notch */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 xs:w-32 sm:w-40 h-5 xs:h-6 sm:h-7 bg-slate-800 rounded-b-xl xs:rounded-b-2xl sm:rounded-b-3xl z-40 shadow-sm border-x border-b border-white/5"></div>
           
-          <div className="h-full w-full relative bg-gray-50 dark:bg-slate-950 overflow-hidden">
+          <div className="h-full w-full relative bg-gray-200 dark:bg-slate-950 overflow-hidden">
             {APP_SCREENS.map((screen, idx) => {
               const isActive = idx === currentIndex;
               const isPast = (currentIndex === 0 && idx === APP_SCREENS.length - 1) || (idx < currentIndex);
               
+              // Only load current, previous and next images to save bandwidth
+              const shouldLoad = Math.abs(idx - currentIndex) <= 1 || 
+                               (currentIndex === 0 && idx === APP_SCREENS.length - 1) || 
+                               (currentIndex === APP_SCREENS.length - 1 && idx === 0);
+
               return (
                 <div
                   key={idx}
@@ -112,12 +114,15 @@ export const ImageCarousel: React.FC = () => {
                   }`}
                 >
                   <div className="h-full w-full relative">
-                    <img 
-                      src={screen.img} 
-                      className={`w-full h-full object-cover transition-transform duration-[8000ms] ease-out ${isActive ? 'scale-105 sm:scale-110' : 'scale-120 sm:scale-125'}`} 
-                      alt={screen.title} 
-                      loading="lazy"
-                    />
+                    {shouldLoad && (
+                      <img 
+                        src={screen.img} 
+                        className={`w-full h-full object-cover transition-transform duration-[8000ms] ease-out ${isActive ? 'scale-105 sm:scale-110' : 'scale-120 sm:scale-125'}`} 
+                        alt={screen.title} 
+                        // First image gets priority to fix LCP
+                        {...(idx === 0 ? { fetchpriority: "high" } : { loading: "lazy" })}
+                      />
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
                     
                     {/* Floating Info Card */}
@@ -126,7 +131,7 @@ export const ImageCarousel: React.FC = () => {
                          <span className={`inline-block px-1.5 xs:px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-[8px] xs:text-[9px] sm:text-[10px] font-black text-white mb-1.5 xs:mb-2 sm:mb-3 uppercase tracking-widest ${screen.accent}`}>
                            V-Beta
                          </span>
-                         <h5 className="text-white text-base xs:text-lg sm:text-xl font-black mb-1 leading-tight">{screen.title}</h5>
+                         <p className="text-white text-base xs:text-lg sm:text-xl font-black mb-1 leading-tight">{screen.title}</p>
                          <p className="text-white/80 text-[8px] xs:text-[10px] sm:text-xs font-medium leading-relaxed line-clamp-2">{screen.desc}</p>
                       </div>
                     </div>
@@ -178,9 +183,9 @@ export const ImageCarousel: React.FC = () => {
                     <i className={`fas ${screen.icon} text-sm xs:text-base sm:text-2xl`}></i>
                   </div>
                   <div className="pt-0 lg:pt-1 overflow-hidden">
-                    <h4 className={`text-base xs:text-xl sm:text-2xl font-black transition-all duration-300 ${isActive ? 'text-indigo-950 dark:text-white' : 'text-gray-400 dark:text-gray-600'}`}>
+                    <h3 className={`text-base xs:text-xl sm:text-2xl font-black transition-all duration-300 ${isActive ? 'text-indigo-950 dark:text-white' : 'text-gray-400 dark:text-gray-600'}`}>
                       {screen.title}
-                    </h4>
+                    </h3>
                     <p className={`font-medium text-[10px] xs:text-sm sm:text-base mt-0.5 xs:mt-1 sm:mt-2 leading-relaxed line-clamp-1 xs:line-clamp-2 lg:line-clamp-none transition-all duration-300 ${isActive ? 'text-gray-600 dark:text-gray-400' : 'text-gray-300 dark:text-gray-700'}`}>
                       {screen.desc}
                     </p>
@@ -196,26 +201,13 @@ export const ImageCarousel: React.FC = () => {
         .cubic-bezier-sophisticated {
           transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
         }
-
         @keyframes progress-line {
           from { width: 0%; }
           to { width: 100%; }
         }
-        
-        @media (hover: hover) {
-          .group\\/phone:hover img {
-             filter: saturate(1.1) contrast(1.05);
-          }
-        }
-
         .select-none {
           -webkit-user-select: none;
           user-select: none;
-        }
-
-        @media (max-width: 400px) {
-          .xs\\:max-w-\\[280px\\] { max-width: 240px !important; }
-          .xs\\:h-\\[560px\\] { height: 480px !important; }
         }
       `}</style>
     </div>

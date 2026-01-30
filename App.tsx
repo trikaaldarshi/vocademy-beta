@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Home } from './pages/Home';
 import { Methodology } from './pages/Methodology';
@@ -26,7 +25,7 @@ const MegaMenu: React.FC<{ isOpen: boolean; navigateTo: (view: ViewState) => voi
       onMouseLeave={close}
     >
       <div className="space-y-4 sm:space-y-6">
-        <h4 className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-indigo-600 mb-1 sm:mb-2">Learning Platform</h4>
+        <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-indigo-700 dark:text-indigo-400 mb-1 sm:mb-2">Learning Platform</p>
         <button onClick={() => { navigateTo('home'); close(); }} className="flex items-start space-x-3 sm:space-x-4 group w-full text-left">
           <div className="w-9 h-9 sm:w-10 sm:h-10 bg-indigo-50 dark:bg-indigo-900/30 rounded-xl flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-all shadow-sm">
             <i className="fas fa-house text-sm sm:text-base"></i>
@@ -47,7 +46,7 @@ const MegaMenu: React.FC<{ isOpen: boolean; navigateTo: (view: ViewState) => voi
         </button>
       </div>
       <div className="space-y-4 sm:space-y-6">
-        <h4 className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-indigo-600 mb-1 sm:mb-2">Our Company</h4>
+        <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-indigo-700 dark:text-indigo-400 mb-1 sm:mb-2">Our Company</p>
         <button onClick={() => { navigateTo('about'); close(); }} className="flex items-start space-x-3 sm:space-x-4 group w-full text-left">
           <div className="w-9 h-9 sm:w-10 sm:h-10 bg-rose-50 dark:bg-rose-900/30 rounded-xl flex items-center justify-center text-rose-600 group-hover:bg-rose-600 group-hover:text-white transition-all shadow-sm">
             <i className="fas fa-info-circle text-sm sm:text-base"></i>
@@ -69,9 +68,9 @@ const MegaMenu: React.FC<{ isOpen: boolean; navigateTo: (view: ViewState) => voi
       </div>
       <div className="col-span-1 sm:col-span-2 pt-4 sm:pt-6 border-t border-gray-100 dark:border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-3">
         <div className="flex space-x-4">
-           <button onClick={() => { navigateTo('privacy'); close(); }} className="text-[9px] sm:text-[10px] font-black uppercase text-gray-400 hover:text-indigo-600 transition-colors">Privacy</button>
-           <button onClick={() => { navigateTo('terms'); close(); }} className="text-[9px] sm:text-[10px] font-black uppercase text-gray-400 hover:text-indigo-600 transition-colors">Terms</button>
-           <button onClick={() => { navigateTo('sitemap'); close(); }} className="text-[9px] sm:text-[10px] font-black uppercase text-gray-400 hover:text-indigo-600 transition-colors">Sitemap</button>
+           <button onClick={() => { navigateTo('privacy'); close(); }} className="text-[9px] sm:text-[10px] font-black uppercase text-gray-600 dark:text-gray-400 hover:text-indigo-600 transition-colors">Privacy</button>
+           <button onClick={() => { navigateTo('terms'); close(); }} className="text-[9px] sm:text-[10px] font-black uppercase text-gray-600 dark:text-gray-400 hover:text-indigo-600 transition-colors">Terms</button>
+           <button onClick={() => { navigateTo('sitemap'); close(); }} className="text-[9px] sm:text-[10px] font-black uppercase text-gray-600 dark:text-gray-400 hover:text-indigo-600 transition-colors">Sitemap</button>
         </div>
         <button onClick={() => { navigateTo('contact'); close(); }} className="text-[9px] sm:text-[10px] font-black uppercase text-indigo-600 hover:underline">Support Portal →</button>
       </div>
@@ -101,7 +100,7 @@ const DownloadModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isO
               <i className="fab fa-apple text-3xl sm:text-4xl"></i>
             </div>
             <h3 className="text-xl sm:text-3xl font-black text-indigo-950 dark:text-white mb-4 tracking-tight leading-tight">iOS App Coming Soon</h3>
-            <p className="text-sm sm:text-base text-gray-500 dark:text-gray-400 font-medium leading-relaxed mb-8 px-2">
+            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 font-medium leading-relaxed mb-8 px-2">
               We are currently focusing on perfecting the Android experience. The iOS version of Vocademy is under development and will be available on the App Store soon!
             </p>
             <button 
@@ -126,13 +125,14 @@ const DownloadModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isO
               
               <button 
                 onClick={() => setShowIosComingSoon(true)}
-                className="block w-full bg-gray-50 dark:bg-slate-800/50 text-gray-500 dark:text-gray-400 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl font-black text-base sm:text-lg border-2 border-gray-200 dark:border-slate-700 flex items-center justify-center space-x-3 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors group active:scale-95"
+                className="block w-full bg-gray-50 dark:bg-slate-800/50 text-gray-600 dark:text-gray-300 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl font-black text-base sm:text-lg border-2 border-gray-200 dark:border-slate-700 flex items-center justify-center space-x-3 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors group active:scale-95"
+                aria-label="iOS version information"
               >
                 <i className="fab fa-apple group-hover:scale-110 transition-transform"></i>
                 <span>Apple App Store</span>
               </button>
 
-              <button onClick={onClose} className="block w-full py-3 sm:py-4 text-gray-400 dark:text-gray-500 font-bold hover:opacity-70 transition-opacity text-sm sm:text-base mt-2">Back to Site</button>
+              <button onClick={onClose} className="block w-full py-3 sm:py-4 text-gray-500 dark:text-gray-400 font-bold hover:opacity-70 transition-opacity text-sm sm:text-base mt-2">Back to Site</button>
             </div>
           </>
         )}
@@ -216,7 +216,7 @@ const App: React.FC = () => {
               </div>
               <div className="flex items-center">
                 <span className="text-base sm:text-xl font-extrabold text-indigo-950 dark:text-white tracking-tight">Vocademy</span>
-                <div className="ml-1.5 sm:ml-2 flex items-center space-x-1 sm:space-x-1.5 px-1.5 sm:px-2 py-0.5 bg-green-100 dark:bg-green-900/40 text-green-600 dark:text-green-400 text-[8px] sm:text-[10px] font-black rounded sm:rounded-md border border-green-200 dark:border-green-800">
+                <div className="ml-1.5 sm:ml-2 flex items-center space-x-1 sm:space-x-1.5 px-1.5 sm:px-2 py-0.5 bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-400 text-[8px] sm:text-[10px] font-black rounded sm:rounded-md border border-green-200 dark:border-green-800">
                   <GlowingDot />
                   <span className="hidden xs:inline">LIVE</span>
                 </div>
@@ -224,16 +224,16 @@ const App: React.FC = () => {
             </button>
             
             <div className="hidden lg:flex items-center space-x-8">
-              <button onClick={() => navigateTo('home')} className={`text-sm font-bold ${view === 'home' ? 'text-indigo-600' : 'text-gray-500 hover:text-indigo-600'} transition-colors`}>Home</button>
-              <button onClick={() => navigateTo('about')} className={`text-sm font-bold ${view === 'about' ? 'text-indigo-600' : 'text-gray-500 hover:text-indigo-600'} transition-colors`}>About Us</button>
-              <button onClick={() => navigateTo('methodology')} className={`text-sm font-bold ${view === 'methodology' ? 'text-indigo-600' : 'text-gray-500 hover:text-indigo-600'} transition-colors`}>Methodology</button>
-              <button onClick={() => navigateTo('contact')} className={`text-sm font-bold ${view === 'contact' ? 'text-indigo-600' : 'text-gray-500 hover:text-indigo-600'} transition-colors`}>Contact</button>
+              <button onClick={() => navigateTo('home')} className={`text-sm font-bold ${view === 'home' ? 'text-indigo-600' : 'text-gray-600 dark:text-gray-400 hover:text-indigo-600'} transition-colors`}>Home</button>
+              <button onClick={() => navigateTo('about')} className={`text-sm font-bold ${view === 'about' ? 'text-indigo-600' : 'text-gray-600 dark:text-gray-400 hover:text-indigo-600'} transition-colors`}>About Us</button>
+              <button onClick={() => navigateTo('methodology')} className={`text-sm font-bold ${view === 'methodology' ? 'text-indigo-600' : 'text-gray-600 dark:text-gray-400 hover:text-indigo-600'} transition-colors`}>Methodology</button>
+              <button onClick={() => navigateTo('contact')} className={`text-sm font-bold ${view === 'contact' ? 'text-indigo-600' : 'text-gray-600 dark:text-gray-400 hover:text-indigo-600'} transition-colors`}>Contact</button>
             </div>
 
             <div className="flex items-center space-x-2 sm:space-x-4">
               <button 
                 onClick={toggleDarkMode} 
-                className="p-1.5 w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center hover:bg-indigo-50 dark:hover:bg-indigo-900/30 text-gray-500 dark:text-gray-400 transition-all"
+                className="p-1.5 w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center hover:bg-indigo-50 dark:hover:bg-indigo-900/30 text-gray-600 dark:text-gray-400 transition-all"
                 aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
               >
                 {darkMode ? <i className="fas fa-sun text-base sm:text-lg text-yellow-500"></i> : <i className="fas fa-moon text-base sm:text-lg"></i>}
@@ -256,7 +256,7 @@ const App: React.FC = () => {
         </nav>
       </div>
 
-      <main className="pt-4 sm:pt-8">
+      <main className="pt-4 sm:pt-8" id="main-content">
         {view === 'home' && <Home navigateTo={navigateTo} handleDownload={handleDownload} />}
         {view === 'methodology' && <Methodology navigateTo={navigateTo} />}
         {view === 'privacy' && <Privacy />}
@@ -275,11 +275,11 @@ const App: React.FC = () => {
                 <div className="w-8 h-8 sm:w-10 sm:h-10 bg-indigo-600 rounded-lg flex items-center justify-center font-black text-white shadow-lg">V</div>
                 <span className="text-xl sm:text-2xl font-black text-indigo-950 dark:text-white tracking-tight">Vocademy</span>
               </div>
-              <p className="text-gray-500 dark:text-gray-400 text-base sm:text-lg max-w-sm mx-auto md:mx-0 leading-relaxed mb-6 sm:mb-8 font-medium">The most advanced AI-powered vocabulary platform for competitive exam ecosystem.</p>
+              <p className="text-gray-600 dark:text-gray-400 text-base sm:text-lg max-w-sm mx-auto md:mx-0 leading-relaxed mb-6 sm:mb-8 font-medium">The most advanced AI-powered vocabulary platform for competitive exam ecosystem.</p>
               <div className="flex justify-center md:justify-start space-x-4">
                 <a 
                   href="https://telegram.dog/VocademyApp" 
-                  className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-100 dark:bg-slate-900 rounded-full flex items-center justify-center text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 transition-all hover:scale-110 shadow-sm"
+                  className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-100 dark:bg-slate-900 rounded-full flex items-center justify-center text-gray-600 hover:text-indigo-600 hover:bg-indigo-50 transition-all hover:scale-110 shadow-sm"
                   aria-label="Vocademy on Telegram"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -288,7 +288,7 @@ const App: React.FC = () => {
                 </a>
                 <a 
                   href="https://X.com/VocademyApp" 
-                  className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-100 dark:bg-slate-900 rounded-full flex items-center justify-center text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 transition-all hover:scale-110 shadow-sm"
+                  className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-100 dark:bg-slate-900 rounded-full flex items-center justify-center text-gray-600 hover:text-indigo-600 hover:bg-indigo-50 transition-all hover:scale-110 shadow-sm"
                   aria-label="Vocademy on X"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -298,19 +298,19 @@ const App: React.FC = () => {
               </div>
             </div>
             <div>
-              <h4 className="text-indigo-950 dark:text-white font-black uppercase tracking-widest text-xs sm:text-sm mb-4 sm:mb-6">Explore</h4>
+              <p className="text-indigo-950 dark:text-white font-black uppercase tracking-widest text-xs sm:text-sm mb-4 sm:mb-6">Explore</p>
               <ul className="space-y-3 sm:space-y-4">
-                <li><button onClick={() => navigateTo('about')} className="text-gray-500 dark:text-gray-400 hover:text-indigo-600 transition-colors font-bold text-sm sm:text-base">About Us</button></li>
-                <li><button onClick={() => navigateTo('team')} className="text-gray-500 dark:text-gray-400 hover:text-indigo-600 transition-colors font-bold text-sm sm:text-base">Team</button></li>
-                <li><button onClick={() => navigateTo('methodology')} className="text-gray-500 dark:text-gray-400 hover:text-indigo-600 transition-colors font-bold text-sm sm:text-base">Methodology</button></li>
-                <li><button onClick={() => navigateTo('sitemap')} className="text-gray-500 dark:text-gray-400 hover:text-indigo-600 transition-colors font-bold text-sm sm:text-base">Sitemap</button></li>
+                <li><button onClick={() => navigateTo('about')} className="text-gray-600 dark:text-gray-400 hover:text-indigo-600 transition-colors font-bold text-sm sm:text-base">About Us</button></li>
+                <li><button onClick={() => navigateTo('team')} className="text-gray-600 dark:text-gray-400 hover:text-indigo-600 transition-colors font-bold text-sm sm:text-base">Team</button></li>
+                <li><button onClick={() => navigateTo('methodology')} className="text-gray-600 dark:text-gray-400 hover:text-indigo-600 transition-colors font-bold text-sm sm:text-base">Methodology</button></li>
+                <li><button onClick={() => navigateTo('sitemap')} className="text-gray-600 dark:text-gray-400 hover:text-indigo-600 transition-colors font-bold text-sm sm:text-base">Sitemap</button></li>
               </ul>
             </div>
             <div>
-              <h4 className="text-indigo-950 dark:text-white font-black uppercase tracking-widest text-xs sm:text-sm mb-4 sm:mb-6">Legal</h4>
+              <p className="text-indigo-950 dark:text-white font-black uppercase tracking-widest text-xs sm:text-sm mb-4 sm:mb-6">Legal</p>
               <ul className="space-y-3 sm:space-y-4">
-                <li><button onClick={() => navigateTo('privacy')} className="text-gray-500 dark:text-gray-400 hover:text-indigo-600 transition-colors font-bold text-sm sm:text-base">Privacy Policy</button></li>
-                <li><button onClick={() => navigateTo('terms')} className="text-gray-500 dark:text-gray-400 hover:text-indigo-600 transition-colors font-bold text-sm sm:text-base">Terms of Service</button></li>
+                <li><button onClick={() => navigateTo('privacy')} className="text-gray-600 dark:text-gray-400 hover:text-indigo-600 transition-colors font-bold text-sm sm:text-base">Privacy Policy</button></li>
+                <li><button onClick={() => navigateTo('terms')} className="text-gray-600 dark:text-gray-400 hover:text-indigo-600 transition-colors font-bold text-sm sm:text-base">Terms of Service</button></li>
               </ul>
             </div>
           </div>
@@ -320,10 +320,12 @@ const App: React.FC = () => {
         </div>
       </footer>
 
+      {/* CLS FIX: Defined w/h and fixed position for the pill button */}
       <button 
         onClick={handleDownload}
-        className="fixed bottom-4 sm:bottom-10 right-4 sm:right-10 z-[60] flex items-center bg-indigo-700 dark:bg-indigo-600 text-white px-5 sm:px-8 py-3.5 sm:py-4 rounded-full font-black shadow-[0_15px_40px_-10px_rgba(79,70,229,0.5)] hover:scale-105 active:scale-95 transition-all border border-white/20 group backdrop-blur-sm"
+        className="fixed bottom-4 sm:bottom-10 right-4 sm:right-10 z-[60] flex items-center justify-center bg-indigo-700 dark:bg-indigo-600 text-white w-[140px] sm:w-[180px] h-[48px] sm:h-[60px] rounded-full font-black shadow-[0_15px_40px_-10px_rgba(79,70,229,0.5)] hover:scale-105 active:scale-95 transition-all border border-white/20 group backdrop-blur-sm"
         aria-label="Download Vocademy App"
+        style={{ contain: 'layout' }}
       >
         <i className="fas fa-download mr-2 sm:mr-3 group-hover:translate-y-1 transition-transform"></i>
         <span className="text-xs sm:text-lg tracking-tight uppercase">DOWNLOAD</span>
