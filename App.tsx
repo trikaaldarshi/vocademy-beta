@@ -90,12 +90,23 @@ const DownloadModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isO
         </div>
         <h3 className="text-xl sm:text-3xl font-black text-indigo-950 dark:text-white mb-4 tracking-tight leading-tight">Download <br /> Vocademy App</h3>
         <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 font-medium leading-relaxed mb-6 sm:mb-8">Master your exam vocabulary with our cutting-edge AI platform.</p>
-        <div className="space-y-3">
-          <a href="https://play.google.com/store/apps/details?id=com.lakshya.vocademy&pcampaignid=web_share" target="_blank" rel="noreferrer" className="block w-full bg-indigo-600 text-white py-3.5 sm:py-4 rounded-xl sm:rounded-2xl font-black text-base sm:text-lg shadow-xl hover:bg-indigo-700 transition-all active:scale-95 flex items-center justify-center space-x-3">
-            <i className="fab fa-google-play"></i>
+        <div className="space-y-4">
+          <a href="https://play.google.com/store/apps/details?id=com.lakshya.vocademy&pcampaignid=web_share" target="_blank" rel="noreferrer" className="block w-full bg-indigo-600 text-white py-3.5 sm:py-4 rounded-xl sm:rounded-2xl font-black text-base sm:text-lg shadow-xl hover:bg-indigo-700 transition-all active:scale-95 flex items-center justify-center space-x-3 group">
+            <i className="fab fa-google-play group-hover:scale-110 transition-transform"></i>
             <span>Google Play Store</span>
           </a>
-          <button onClick={onClose} className="block w-full py-3 sm:py-4 text-gray-500 dark:text-gray-400 font-bold hover:opacity-70 transition-opacity text-sm sm:text-base">Back to Site</button>
+          
+          <div className="relative group cursor-not-allowed">
+            <div className="absolute -top-2 -right-2 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400 text-[8px] sm:text-[10px] font-black px-2 py-0.5 rounded-full border border-indigo-200 dark:border-indigo-800 z-10 shadow-sm">
+              COMING SOON
+            </div>
+            <div className="block w-full bg-gray-100 dark:bg-slate-800 text-gray-400 dark:text-gray-500 py-3.5 sm:py-4 rounded-xl sm:rounded-2xl font-black text-base sm:text-lg border-2 border-dashed border-gray-200 dark:border-slate-700 flex items-center justify-center space-x-3 opacity-80">
+              <i className="fab fa-apple"></i>
+              <span>Apple App Store</span>
+            </div>
+          </div>
+
+          <button onClick={onClose} className="block w-full py-3 sm:py-4 text-gray-500 dark:text-gray-400 font-bold hover:opacity-70 transition-opacity text-sm sm:text-base mt-2">Back to Site</button>
         </div>
       </div>
     </div>
