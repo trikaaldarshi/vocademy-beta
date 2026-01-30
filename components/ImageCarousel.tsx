@@ -87,13 +87,13 @@ export const ImageCarousel: React.FC = () => {
       <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
         {/* Phone Mockup Section */}
         <div 
-          className="relative mx-auto w-full max-w-[280px] sm:max-w-[340px] h-[560px] sm:h-[680px] bg-slate-900 rounded-[2.5rem] sm:rounded-[3.5rem] border-[8px] sm:border-[12px] border-slate-800 shadow-2xl overflow-hidden ring-1 ring-white/10 group/phone transition-transform duration-700 select-none"
+          className="relative mx-auto w-full max-w-[240px] xs:max-w-[280px] sm:max-w-[340px] h-[480px] xs:h-[560px] sm:h-[680px] bg-slate-900 rounded-[2rem] xs:rounded-[2.5rem] sm:rounded-[3.5rem] border-[6px] xs:border-[8px] sm:border-[12px] border-slate-800 shadow-2xl overflow-hidden ring-1 ring-white/10 group/phone transition-transform duration-700 select-none"
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
           {/* Notch */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 sm:w-40 h-6 sm:h-7 bg-slate-800 rounded-b-2xl sm:rounded-b-3xl z-40 shadow-sm border-x border-b border-white/5"></div>
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 xs:w-32 sm:w-40 h-5 xs:h-6 sm:h-7 bg-slate-800 rounded-b-xl xs:rounded-b-2xl sm:rounded-b-3xl z-40 shadow-sm border-x border-b border-white/5"></div>
           
           <div className="h-full w-full relative bg-gray-50 dark:bg-slate-950 overflow-hidden">
             {APP_SCREENS.map((screen, idx) => {
@@ -121,13 +121,13 @@ export const ImageCarousel: React.FC = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
                     
                     {/* Floating Info Card */}
-                    <div className={`absolute bottom-6 sm:bottom-8 left-4 sm:left-6 right-4 sm:right-6 transition-all duration-1000 delay-200 ${isActive ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                      <div className="bg-white/10 backdrop-blur-xl p-4 sm:p-6 rounded-[1.5rem] sm:rounded-[2rem] border border-white/20 shadow-2xl">
-                         <span className={`inline-block px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-[9px] sm:text-[10px] font-black text-white mb-2 sm:mb-3 uppercase tracking-widest ${screen.accent}`}>
+                    <div className={`absolute bottom-4 xs:bottom-6 sm:bottom-8 left-3 xs:left-4 sm:left-6 right-3 xs:right-4 sm:right-6 transition-all duration-1000 delay-200 ${isActive ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                      <div className="bg-white/10 backdrop-blur-xl p-3 xs:p-4 sm:p-6 rounded-xl xs:rounded-[1.5rem] sm:rounded-[2rem] border border-white/20 shadow-2xl">
+                         <span className={`inline-block px-1.5 xs:px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-[8px] xs:text-[9px] sm:text-[10px] font-black text-white mb-1.5 xs:mb-2 sm:mb-3 uppercase tracking-widest ${screen.accent}`}>
                            V-Beta
                          </span>
-                         <h5 className="text-white text-lg sm:text-xl font-black mb-1 sm:mb-2 leading-tight">{screen.title}</h5>
-                         <p className="text-white/80 text-[10px] sm:text-xs font-medium leading-relaxed">{screen.desc}</p>
+                         <h5 className="text-white text-base xs:text-lg sm:text-xl font-black mb-1 leading-tight">{screen.title}</h5>
+                         <p className="text-white/80 text-[8px] xs:text-[10px] sm:text-xs font-medium leading-relaxed line-clamp-2">{screen.desc}</p>
                       </div>
                     </div>
                   </div>
@@ -137,24 +137,24 @@ export const ImageCarousel: React.FC = () => {
           </div>
 
           {/* Mobile Swipe Indicator */}
-          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-1.5 z-50 lg:hidden">
+          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-1 z-50 lg:hidden">
             {APP_SCREENS.map((_, idx) => (
               <div 
                 key={idx} 
-                className={`h-1 rounded-full transition-all duration-300 ${idx === currentIndex ? 'w-4 bg-white' : 'w-1 bg-white/30'}`}
+                className={`h-0.5 xs:h-1 rounded-full transition-all duration-300 ${idx === currentIndex ? 'w-3 xs:w-4 bg-white' : 'w-1 bg-white/30'}`}
               />
             ))}
           </div>
         </div>
 
         {/* Feature List Section */}
-        <div className="space-y-4 sm:space-y-6 mt-8 lg:mt-0">
+        <div className="space-y-3 xs:space-y-4 sm:space-y-6 mt-6 xs:mt-8 lg:mt-0">
           {APP_SCREENS.map((screen, idx) => {
             const isActive = idx === currentIndex;
             return (
               <div 
                 key={idx} 
-                className={`relative transition-all duration-[500ms] cubic-bezier-sophisticated cursor-pointer p-5 sm:p-8 rounded-[2rem] sm:rounded-[3rem] border-2 group active:scale-[0.98] lg:active:scale-100 ${
+                className={`relative transition-all duration-[500ms] cubic-bezier-sophisticated cursor-pointer p-4 xs:p-5 sm:p-8 rounded-[1.5rem] xs:rounded-[2rem] sm:rounded-[3rem] border-2 group active:scale-[0.98] lg:active:scale-100 ${
                   isActive 
                     ? 'bg-white dark:bg-slate-900 border-indigo-200 dark:border-indigo-500/30 shadow-[0_15px_40px_rgba(79,70,229,0.1)] lg:translate-x-6' 
                     : 'bg-transparent border-transparent opacity-40 hover:opacity-70 lg:hover:translate-x-3'
@@ -163,7 +163,7 @@ export const ImageCarousel: React.FC = () => {
               >
                 {/* Visual Progress Line */}
                 {isActive && (
-                  <div className="absolute bottom-0 left-8 right-8 h-1 bg-gray-100 dark:bg-slate-800 rounded-full overflow-hidden mb-[-1px]">
+                  <div className="absolute bottom-0 left-6 xs:left-8 right-6 xs:right-8 h-1 bg-gray-100 dark:bg-slate-800 rounded-full overflow-hidden mb-[-1px]">
                     <div 
                       className="h-full bg-indigo-600 dark:bg-indigo-500 rounded-full"
                       style={{ 
@@ -173,15 +173,15 @@ export const ImageCarousel: React.FC = () => {
                   </div>
                 )}
 
-                <div className="flex items-center lg:items-start space-x-5 sm:space-x-8 relative z-10">
-                  <div className={`w-12 h-12 sm:w-16 sm:h-16 rounded-2xl sm:rounded-3xl flex-shrink-0 flex items-center justify-center text-white font-black text-xl sm:text-2xl transition-all duration-[700ms] cubic-bezier-sophisticated ${screen.accent} ${isActive ? 'scale-110 shadow-lg rotate-0' : 'grayscale opacity-30 rotate-6'}`}>
-                    <i className={`fas ${screen.icon}`}></i>
+                <div className="flex items-center lg:items-start space-x-3 xs:space-x-5 sm:space-x-8 relative z-10">
+                  <div className={`w-10 h-10 xs:w-12 xs:h-12 sm:w-16 sm:h-16 rounded-xl xs:rounded-2xl sm:rounded-3xl flex-shrink-0 flex items-center justify-center text-white font-black text-lg xs:text-xl sm:text-2xl transition-all duration-[700ms] cubic-bezier-sophisticated ${screen.accent} ${isActive ? 'scale-110 shadow-lg rotate-0' : 'grayscale opacity-30 rotate-6'}`}>
+                    <i className={`fas ${screen.icon} text-sm xs:text-base sm:text-2xl`}></i>
                   </div>
                   <div className="pt-0 lg:pt-1 overflow-hidden">
-                    <h4 className={`text-xl sm:text-2xl font-black transition-all duration-300 ${isActive ? 'text-indigo-950 dark:text-white' : 'text-gray-400 dark:text-gray-600'}`}>
+                    <h4 className={`text-base xs:text-xl sm:text-2xl font-black transition-all duration-300 ${isActive ? 'text-indigo-950 dark:text-white' : 'text-gray-400 dark:text-gray-600'}`}>
                       {screen.title}
                     </h4>
-                    <p className={`font-medium text-sm sm:text-base mt-1 sm:mt-2 leading-relaxed line-clamp-2 lg:line-clamp-none transition-all duration-300 ${isActive ? 'text-gray-600 dark:text-gray-400' : 'text-gray-300 dark:text-gray-700'}`}>
+                    <p className={`font-medium text-[10px] xs:text-sm sm:text-base mt-0.5 xs:mt-1 sm:mt-2 leading-relaxed line-clamp-1 xs:line-clamp-2 lg:line-clamp-none transition-all duration-300 ${isActive ? 'text-gray-600 dark:text-gray-400' : 'text-gray-300 dark:text-gray-700'}`}>
                       {screen.desc}
                     </p>
                   </div>
@@ -211,6 +211,11 @@ export const ImageCarousel: React.FC = () => {
         .select-none {
           -webkit-user-select: none;
           user-select: none;
+        }
+
+        @media (max-width: 400px) {
+          .xs\\:max-w-\\[280px\\] { max-width: 240px !important; }
+          .xs\\:h-\\[560px\\] { height: 480px !important; }
         }
       `}</style>
     </div>
