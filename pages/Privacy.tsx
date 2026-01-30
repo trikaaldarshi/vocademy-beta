@@ -13,9 +13,16 @@ export const Privacy: React.FC = () => {
         <h1 className="text-4xl md:text-6xl font-black text-indigo-950 dark:text-white mb-6 tracking-tight leading-none">
           Privacy <span className="text-indigo-600">Policy</span>
         </h1>
-        <div className="flex items-center justify-center space-x-2 text-xs font-bold text-gray-500 dark:text-gray-400 mb-8">
-          <i className="far fa-calendar-check text-indigo-500"></i>
-          <span>Effective Date: December 15, 2025</span>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-xs font-bold text-gray-500 dark:text-gray-400 mb-8">
+          <div className="flex items-center space-x-2">
+            <i className="far fa-calendar-alt text-indigo-500"></i>
+            <span>Last Updated: January 17, 2026</span>
+          </div>
+          <div className="hidden sm:block text-gray-300 dark:text-gray-700">|</div>
+          <div className="flex items-center space-x-2">
+            <i className="far fa-calendar-check text-indigo-500"></i>
+            <span>Effective Date: December 15, 2025</span>
+          </div>
         </div>
         
         <div className="max-w-4xl mx-auto p-6 md:p-10 bg-white dark:bg-slate-900/50 rounded-[2.5rem] border border-indigo-50 dark:border-slate-800 shadow-2xl relative overflow-hidden group">
@@ -33,7 +40,7 @@ export const Privacy: React.FC = () => {
       </div>
 
       <div className="space-y-16">
-        {/* Philosophy */}
+        {/* Our Privacy Philosophy */}
         <section>
           <div className="flex items-center space-x-4 mb-8">
             <div className="w-12 h-12 bg-rose-500 text-white rounded-xl flex items-center justify-center shadow-xl shadow-rose-500/20 animate-float">
@@ -42,14 +49,14 @@ export const Privacy: React.FC = () => {
             <h2 className="text-2xl md:text-3xl font-black text-indigo-950 dark:text-white tracking-tight">Our Privacy Philosophy</h2>
           </div>
           <div className="bg-white dark:bg-slate-900 p-8 md:p-12 rounded-[2.5rem] border border-gray-100 dark:border-slate-800 shadow-xl">
-            <p className="text-indigo-900 dark:text-indigo-300 font-bold text-lg mb-8">At Vocademy, we strongly believe that:</p>
+            <p className="text-indigo-900 dark:text-indigo-300 font-bold text-lg mb-8 text-center">At Vocademy, we strongly believe that:</p>
             <div className="grid md:grid-cols-3 gap-8">
               <PhilosophyItem icon="fa-user-shield" title="Safe & Respectful" text="Learning should be safe and respectful" />
               <PhilosophyItem icon="fa-filter" title="Minimal Data" text="User data should be collected minimally" />
               <PhilosophyItem icon="fa-handshake" title="Long-term Trust" text="Transparency builds long-term trust" />
             </div>
-            <p className="mt-10 text-gray-600 dark:text-gray-400 font-medium leading-relaxed bg-gray-50 dark:bg-slate-950/50 p-6 rounded-2xl border border-gray-100 dark:border-slate-800">
-              We collect only what is necessary to provide a smooth, personalized, and effective learning experience. We do not collect data for unnecessary tracking, aggressive advertising, or resale.
+            <p className="mt-10 text-gray-600 dark:text-gray-400 font-medium leading-relaxed bg-gray-50 dark:bg-slate-950/50 p-6 rounded-2xl border border-gray-100 dark:border-slate-800 text-center">
+              We collect only what is necessary to provide a smooth, personalized, and effective learning experience. We do <b>not</b> collect data for unnecessary tracking, aggressive advertising, or resale.
             </p>
           </div>
         </section>
@@ -62,6 +69,9 @@ export const Privacy: React.FC = () => {
             </div>
             <h2 className="text-2xl md:text-3xl font-black text-indigo-950 dark:text-white tracking-tight">Information We Collect</h2>
           </div>
+          
+          <p className="text-gray-600 dark:text-gray-400 mb-8 font-bold">We collect information in the following categories:</p>
+
           <div className="grid gap-8">
             <PrivacySectionCard 
               title="1. Personal Information"
@@ -74,7 +84,7 @@ export const Privacy: React.FC = () => {
                 "Profile photo (only if you choose to upload one)"
               ]}
               extraTitle="Media & Camera Access"
-              extra="To enable profile photo customization, the app may request permission to access your device’s Camera and Photo Library/Media Storage. These permissions are used solely for the purpose of capturing or selecting a profile picture. We do not access, collect, or store any other media from your device."
+              extra="To enable profile photo customization, the app may request permission to access your device's Camera and Photo Library/Media Storage. These permissions are used solely for the purpose of capturing or selecting a profile picture. We do not access, collect, or store any other media from your device."
               summary="This information helps us identify your account, provide support, and personalize your experience."
             />
             <PrivacySectionCard 
@@ -100,7 +110,7 @@ export const Privacy: React.FC = () => {
                 "Crash logs and performance diagnostics",
                 "Network connection status (online/offline/latency)"
               ]}
-              extraTitle="Portrait Mode & Network"
+              extraTitle="Screen Orientation & Local Processing"
               extra="Screen Orientation: The app is designed and locked to Portrait Mode only to ensure a consistent and optimized learning interface across all devices."
               summary="This information helps us fix bugs, improve stability, notify you of connectivity issues, and ensure a smooth user experience. Data regarding network status is processed locally on your device."
             />
@@ -108,55 +118,126 @@ export const Privacy: React.FC = () => {
         </section>
 
         {/* How We Use Your Information */}
-        <section className="grid md:grid-cols-2 gap-8">
-          <FeatureBlock 
-            title="How We Use Information" 
-            icon="fa-gears" 
-            items={[
-              "Provide and maintain core app functionality",
-              "Personalize learning and revision experience",
-              "Track learning progress and consistency",
-              "Improve app performance, stability, and security",
-              "Communicate important updates and support responses",
-              "Comply with legal and regulatory requirements"
-            ]}
-            footer="Vocademy does not sell, rent, or trade your personal information to any third party."
-          />
-          <FeatureBlock 
-            title="Editorial & User Data" 
-            icon="fa-feather-pointed" 
-            desc="Vocademy focuses on structured editorial-based learning and daily revision. Any data related to editorial vocabulary practice, revision history, learning streaks, or gamified progress indicators is used only within the app to support your personal learning goals. This data is never used for advertising targeting and is never shared for marketing purposes."
-          />
+        <section>
+          <div className="grid md:grid-cols-2 gap-8">
+            <FeatureBlock 
+              title="How We Use Your Information" 
+              icon="fa-gears" 
+              items={[
+                "To provide and maintain core app functionality",
+                "To personalize learning and revision experience",
+                "To track learning progress and consistency",
+                "To improve app performance, stability, and security",
+                "To communicate important updates and support responses",
+                "To comply with legal and regulatory requirements"
+              ]}
+              footer="Vocademy does not sell, rent, or trade your personal information to any third party."
+            />
+            <FeatureBlock 
+              title="Editorial Learning & User Data" 
+              icon="fa-feather-pointed" 
+              desc="Vocademy focuses on structured editorial-based learning and daily revision. Any data related to editorial vocabulary practice, revision history, learning streaks, or gamified progress indicators is used only within the app to support your personal learning goals. This data is never used for advertising targeting and is never shared for marketing purposes."
+            />
+          </div>
         </section>
 
         {/* Gamification & Storage */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 gap-8">
           <MiniCard 
-            title="Gamification" 
+            title="Gamification & Progress" 
             icon="fa-trophy" 
-            text="We use light gamification to encourage consistency, such as progress indicators and streaks. All such data remains private to your account."
+            text="Vocademy uses light gamification to encourage consistency, such as progress indicators, streaks, and milestones. All such data remains private to your account and is used solely to motivate and guide your learning journey."
           />
           <MiniCard 
-            title="Data Storage" 
+            title="Data Storage & Security" 
             icon="fa-cloud-arrow-up" 
-            text="Data is stored using secure cloud infrastructure with restricted access. We review and improve our security measures continuously."
-          />
-          <MiniCard 
-            title="Third Parties" 
-            icon="fa-link-slash" 
-            text="We use trusted services for app analytics, crash reporting, and payment processing. They operate under their own privacy policies."
+            text="We take reasonable and appropriate security measures to protect your data. Data is stored using secure cloud infrastructure with restricted access. While no digital system is completely immune to risks, we continuously improve our security measures."
           />
         </div>
 
-        {/* Email, Rights, Children, Compliance */}
+        {/* Third-Party & AdMob */}
+        <section>
+          <div className="flex items-center space-x-4 mb-8">
+            <div className="w-12 h-12 bg-amber-500 text-white rounded-xl flex items-center justify-center shadow-xl shadow-amber-500/20">
+              <i className="fas fa-handshake-angle text-xl"></i>
+            </div>
+            <h2 className="text-2xl md:text-3xl font-black text-indigo-950 dark:text-white tracking-tight">Third-Party Services</h2>
+          </div>
+          <div className="bg-white dark:bg-slate-900 p-8 md:p-12 rounded-[2.5rem] border border-gray-100 dark:border-slate-800 shadow-xl space-y-10">
+            <div>
+              <p className="text-gray-600 dark:text-gray-400 font-medium text-base mb-6">
+                Vocademy may use trusted third-party services for limited purposes such as analytics, crash reporting, payment processing, and display advertising.
+              </p>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                {["App Analytics", "Crash Reporting", "Payment Processing", "Advertising"].map((item, i) => (
+                  <div key={i} className="flex items-center space-x-3 p-4 bg-gray-50 dark:bg-slate-950 rounded-2xl border border-gray-100 dark:border-slate-800 font-bold text-xs text-indigo-600">
+                    <i className="fas fa-check-circle"></i>
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="p-8 bg-indigo-50/50 dark:bg-indigo-900/10 rounded-3xl border border-indigo-100 dark:border-indigo-800/50">
+              <div className="flex items-center space-x-3 mb-4">
+                <i className="fas fa-rectangle-ad text-indigo-600 text-xl"></i>
+                <h4 className="text-lg font-black text-indigo-950 dark:text-white uppercase tracking-wider">Advertising (Google AdMob)</h4>
+              </div>
+              <div className="space-y-4 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                <p>Vocademy uses <b>Google AdMob</b> to display advertisements within the app. These advertisements help us keep the app free and cover operational costs (server, AI services, etc.).</p>
+                <ul className="list-disc pl-5 space-y-2 font-medium">
+                  <li><b>Personalized Advertising:</b> Google and its partners may use cookies or unique device identifiers to serve ads based on your visits to our app and other websites on the internet.</li>
+                  <li><b>Opt-Out:</b> You can opt out of personalized advertising by visiting Google's Ad Settings or by using your device's privacy settings.</li>
+                  <li><b>Data Collection:</b> AdMob may collect and use certain data in accordance with Google’s Privacy Policy.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Subscriptions & Payments */}
+        <section>
+          <div className="flex items-center space-x-4 mb-8">
+            <div className="w-12 h-12 bg-emerald-600 text-white rounded-xl flex items-center justify-center shadow-xl shadow-emerald-500/20">
+              <i className="fas fa-credit-card text-xl"></i>
+            </div>
+            <h2 className="text-2xl md:text-3xl font-black text-indigo-950 dark:text-white tracking-tight">Subscriptions and Payments</h2>
+          </div>
+          <div className="bg-white dark:bg-slate-900 p-8 md:p-12 rounded-[2.5rem] border border-gray-100 dark:border-slate-800 shadow-xl">
+             <div className="grid md:grid-cols-2 gap-12">
+               <div className="space-y-4">
+                 <h4 className="text-lg font-black text-indigo-950 dark:text-white flex items-center">
+                   <i className="fas fa-wallet text-indigo-600 mr-3"></i>
+                   Billing Logic
+                 </h4>
+                 <ul className="space-y-3 text-sm text-gray-600 dark:text-gray-400 font-medium">
+                   <li className="flex items-start space-x-2"><i className="fas fa-check mt-1 text-emerald-500"></i><span>Payments are processed securely via Google Play Store.</span></li>
+                   <li className="flex items-start space-x-2"><i className="fas fa-check mt-1 text-emerald-500"></i><span>Vocademy does <b>not</b> store your credit card or bank details.</span></li>
+                   <li className="flex items-start space-x-2"><i className="fas fa-check mt-1 text-emerald-500"></i><span>Subscriptions auto-renew unless canceled 24h before.</span></li>
+                 </ul>
+               </div>
+               <div className="space-y-4">
+                 <h4 className="text-lg font-black text-indigo-950 dark:text-white flex items-center">
+                   <i className="fas fa-rotate-left text-orange-500 mr-3"></i>
+                   Refund Policy
+                 </h4>
+                 <div className="p-5 bg-orange-50/50 dark:bg-orange-950/20 rounded-2xl border border-orange-100 dark:border-orange-900/40 text-sm text-gray-600 dark:text-gray-400 font-medium leading-relaxed">
+                   In addition to Google Play's standard refund window, Vocademy offers an extended money-back guarantee: <b>3 days for Monthly plans</b> and <b>7 days for Yearly plans</b>. If you are not satisfied, please contact our support team with your Order ID.
+                 </div>
+               </div>
+             </div>
+          </div>
+        </section>
+
+        {/* Email & Rights */}
         <div className="grid md:grid-cols-2 gap-8">
           <section className="bg-white dark:bg-slate-900 p-8 rounded-[2.5rem] border border-gray-100 dark:border-slate-800 shadow-xl">
             <h3 className="text-2xl font-black text-indigo-950 dark:text-white mb-6 flex items-center">
               <i className="fas fa-envelope-open-text text-indigo-600 mr-4"></i>
               Email Communication
             </h3>
-            <p className="text-gray-600 dark:text-gray-400 font-medium leading-relaxed">
-              When you contact Vocademy for support, feedback, or queries, we usually respond from our official support email addresses. All our official email addresses are listed in the Contact Us section. Please treat emails from these addresses as valid only for Vocademy-related communication.
+            <p className="text-gray-600 dark:text-gray-400 font-medium leading-relaxed text-sm">
+              When you contact Vocademy for support, feedback, or queries, we usually respond from our official support email addresses. Please treat emails from these addresses as valid only for Vocademy-related communication.
             </p>
           </section>
 
@@ -167,7 +248,7 @@ export const Privacy: React.FC = () => {
             </h3>
             <ul className="grid grid-cols-2 gap-3">
               {["Access & Update Data", "Correction of Inaccuracy", "Account Deletion", "Permission Control"].map((item, i) => (
-                <li key={i} className="bg-gray-50 dark:bg-slate-950 p-3 rounded-xl border border-gray-100 dark:border-slate-800 text-xs font-bold text-gray-500 dark:text-gray-400">
+                <li key={i} className="bg-gray-50 dark:bg-slate-950 p-3 rounded-xl border border-gray-100 dark:border-slate-800 text-[10px] font-black uppercase text-gray-500 dark:text-gray-400">
                   <i className="fas fa-circle-check text-indigo-500 mr-2"></i>{item}
                 </li>
               ))}
@@ -175,8 +256,9 @@ export const Privacy: React.FC = () => {
           </section>
         </div>
 
-        <section className="bg-white dark:bg-slate-900 p-8 md:p-12 rounded-[2.5rem] border border-gray-100 dark:border-slate-800 shadow-xl grid md:grid-cols-2 gap-12">
-          <div>
+        {/* Children & Retention */}
+        <div className="grid md:grid-cols-2 gap-8">
+          <section className="bg-white dark:bg-slate-900 p-8 rounded-[2.5rem] border border-gray-100 dark:border-slate-800 shadow-xl">
             <h3 className="text-xl font-black text-indigo-950 dark:text-white mb-4 flex items-center">
               <i className="fas fa-calendar-minus text-indigo-600 mr-3"></i>
               Data Retention
@@ -184,8 +266,8 @@ export const Privacy: React.FC = () => {
             <p className="text-gray-600 dark:text-gray-400 font-medium leading-relaxed text-sm">
               We retain user data only for as long as necessary to provide services, maintain learning history, and comply with legal obligations. When data is no longer required, it is securely deleted or anonymized.
             </p>
-          </div>
-          <div>
+          </section>
+          <section className="bg-white dark:bg-slate-900 p-8 rounded-[2.5rem] border border-gray-100 dark:border-slate-800 shadow-xl">
             <h3 className="text-xl font-black text-indigo-950 dark:text-white mb-4 flex items-center">
               <i className="fas fa-child-reaching text-rose-500 mr-3"></i>
               Children’s Privacy
@@ -193,29 +275,28 @@ export const Privacy: React.FC = () => {
             <p className="text-gray-600 dark:text-gray-400 font-medium leading-relaxed text-sm">
               Vocademy is not knowingly intended for children under 13. If you believe a child has provided personal data, please contact us immediately and we will take appropriate action.
             </p>
-          </div>
-        </section>
+          </section>
+        </div>
 
-        <section className="bg-indigo-50/50 dark:bg-indigo-950/20 p-8 rounded-[2.5rem] border border-indigo-100 dark:border-indigo-900/40">
-           <div className="grid md:grid-cols-2 gap-8 items-center">
+        {/* Legal & Changes */}
+        <section className="bg-indigo-50/50 dark:bg-indigo-950/20 p-10 rounded-[2.5rem] border border-indigo-100 dark:border-indigo-900/40">
+           <div className="grid md:grid-cols-2 gap-12 items-center">
              <div>
-               <h3 className="text-xl font-black text-indigo-950 dark:text-white mb-4">Legal Compliance & Policy Changes</h3>
-               <p className="text-gray-600 dark:text-gray-400 font-medium text-sm leading-relaxed mb-4">
-                 Vocademy complies with applicable data protection laws. We may disclose info when required by law or to protect safety.
-               </p>
-               <p className="text-gray-600 dark:text-gray-400 font-medium text-sm leading-relaxed italic">
-                 Policy updates reflecting new features or legal requirements will be posted here with an updated effective date.
-               </p>
+               <h3 className="text-2xl font-black text-indigo-950 dark:text-white mb-4">Legal Compliance & Changes</h3>
+               <div className="space-y-4 text-gray-600 dark:text-gray-400 font-medium text-sm leading-relaxed">
+                 <p>Vocademy complies with applicable data protection and privacy laws. We may disclose information only when required by law or to protect safety.</p>
+                 <p className="italic">Any changes will be posted on this page with an updated effective date. Continued use of Vocademy after changes indicates acceptance of the updated policy.</p>
+               </div>
              </div>
              <div className="flex justify-center md:justify-end">
-               <div className="w-16 h-16 bg-white dark:bg-slate-900 rounded-2xl flex items-center justify-center shadow-lg">
-                 <i className="fas fa-scale-balanced text-indigo-600 text-3xl"></i>
+               <div className="w-24 h-24 bg-white dark:bg-slate-900 rounded-[2rem] flex items-center justify-center shadow-2xl animate-wiggle">
+                 <i className="fas fa-scale-balanced text-indigo-600 text-5xl"></i>
                </div>
              </div>
            </div>
         </section>
 
-        {/* Contact Section */}
+        {/* Contact Us */}
         <section id="contact-us" className="pt-4">
           <div className="bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-[3rem] p-8 md:p-16 text-white relative overflow-hidden shadow-2xl">
             <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-white/10 rounded-full blur-[100px] -mr-32 -mt-32 animate-pulse-aura"></div>
